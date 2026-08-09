@@ -69,101 +69,6 @@ export const MarkXingbu = (p: P) => (
   </S>
 );
 
-/* ----------------------------- 顶栏 / 右栏 ----------------------------- */
-export const IconBell = (p: P) => (
-  <S {...p}>
-    <path d="M6.5 9a5.5 5.5 0 0 1 11 0c0 5 2 6 2 6H4.5s2-1 2-6Z" />
-    <path d="M10 19a2 2 0 0 0 4 0" />
-  </S>
-);
-export const IconHelp = (p: P) => (
-  <S {...p}>
-    <circle cx="12" cy="12" r="8.5" />
-    <path d="M9.5 9.3c0-1.4 1.1-2.3 2.6-2.3s2.5.9 2.5 2.2c0 1.9-2.4 2-2.4 3.6" />
-    <circle cx="12" cy="16.4" r="0.7" fill="currentColor" />
-  </S>
-);
-export const IconInfo = (p: P) => (
-  <S {...p}>
-    <circle cx="12" cy="12" r="8.5" />
-    <path d="M12 11v5" />
-    <circle cx="12" cy="7.8" r="0.7" fill="currentColor" />
-  </S>
-);
-export const IconChevronDown = (p: P) => (
-  <S {...p}>
-    <path d="m6 9 6 6 6-6" />
-  </S>
-);
-export const IconRefresh = (p: P) => (
-  <S {...p}>
-    <path d="M4 11a8 8 0 0 1 13.5-4.5L20 9M20 4v5h-5" />
-    <path d="M20 13a8 8 0 0 1-13.5 4.5L4 15M4 20v-5h5" />
-  </S>
-);
-export const IconArrowRight = (p: P) => (
-  <S {...p}>
-    <path d="M5 12h14M13 6l6 6-6 6" />
-  </S>
-);
-export const IconRocket = (p: P) => (
-  <S {...p}>
-    <path d="M5 15c-1.5 1.3-2 5-2 5s3.7-.5 5-2" />
-    <path d="M9 15s-1-3 1-7 7-5 9-5c0 2-1 7-5 9s-7 1-7 1L9 15Z" />
-    <circle cx="14.5" cy="9.5" r="1.6" />
-  </S>
-);
-
-/* ----------------------------- 快捷宫格 ----------------------------- */
-export const IconNew = (p: P) => (
-  <S {...p}>
-    <path d="M7 3.5h7L19 8v12.5H7zM14 3.5V8h5" />
-    <path d="M12.5 11.5v5M10 14h5" />
-  </S>
-);
-export const IconUsers = (p: P) => (
-  <S {...p}>
-    <circle cx="9" cy="8" r="2.8" />
-    <path d="M3.5 19c0-3 2.4-5 5.5-5s5.5 2 5.5 5" />
-    <path d="M16 5.4A2.8 2.8 0 0 1 17 11M20.5 19c0-2.3-1.4-4-3.4-4.6" />
-  </S>
-);
-export const IconSearch = (p: P) => (
-  <S {...p}>
-    <circle cx="10.5" cy="10.5" r="6" />
-    <path d="m20 20-5-5" />
-  </S>
-);
-export const IconFund = (p: P) => (
-  <S {...p}>
-    <path d="M3 17c3-2 6-2 9 0s6 2 9 0" />
-    <circle cx="12" cy="8" r="4" />
-    <path d="M12 6.5v3M10.8 7.3h2.4" />
-  </S>
-);
-export const IconScroll = (p: P) => (
-  <S {...p}>
-    <path d="M6 4h11a1.8 1.8 0 0 1 1.8 1.8V18A2.4 2.4 0 0 1 16.4 20.4H7.5" />
-    <path d="M6 4a2.4 2.4 0 0 0-2.4 2.4V7A1.4 1.4 0 0 0 5 8.4h2" />
-    <path d="M9.5 11h6M9.5 14.5h4" />
-  </S>
-);
-export const IconHandshake = (p: P) => (
-  <S {...p}>
-    <path d="M3 8.5 7 7l5 1.5L17 7l4 1.5" />
-    <path d="M7 7v6.5l5 3.5 5-3.5V7" />
-    <path d="M9.5 11.5 12 13l2.5-1.5" />
-  </S>
-);
-
-/** 天下大势图 — 坐姿/卧游 */
-export const IconMap = (p: P) => (
-  <S {...p}>
-    <path d="m9 4 6 2 6-2v14l-6 2-6-2-6 2V6l6-2Z" />
-    <path d="M9 4v14M15 6v14" />
-  </S>
-);
-
 /* ----------------------------- AI 地球 ----------------------------- */
 /** AI 地球 — 双层公转环 + 星点呼吸 + 外辉光 */
 export function Globe({ size = 96 }: { size?: number }) {
@@ -248,27 +153,6 @@ export function Globe({ size = 96 }: { size?: number }) {
         <circle cx="60" cy="6" r="1.8" fill="#ebcb7b" />
         <circle cx="60" cy="6" r="3.6" fill="#ebcb7b" opacity="0.25" />
       </g>
-    </svg>
-  );
-}
-
-/** 品牌徽 — 几何金星 */
-export function BrandMark({ size = 30 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 40 40" fill="none" aria-hidden="true">
-      <path
-        d="M20 2 33 9v15l-13 7L7 24V9L20 2Z"
-        fill="#0a1024"
-        stroke="#d4a84b"
-        strokeWidth="1.5"
-      />
-      <path
-        d="M20 7v26M9 13l22 14M31 13 9 27"
-        stroke="#ebcb7b"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-      <circle cx="20" cy="20" r="3.2" fill="#0a1024" stroke="#ebcb7b" strokeWidth="1.5" />
     </svg>
   );
 }

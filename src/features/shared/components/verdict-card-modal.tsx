@@ -12,7 +12,7 @@
 
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { X, Download, Copy, Share2, Check } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 import { toast } from 'sonner';
@@ -28,13 +28,6 @@ declare global {
   interface WindowEventMap {
     'court:verdict-card': CustomEvent<VerdictCardData>;
   }
-}
-
-export function useVerdictCardTrigger() {
-  return useCallback((data: VerdictCardData) => {
-    if (typeof window === 'undefined') return;
-    window.dispatchEvent(new CustomEvent('court:verdict-card', { detail: data }));
-  }, []);
 }
 
 export function VerdictCardModal() {

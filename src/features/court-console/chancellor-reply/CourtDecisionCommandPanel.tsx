@@ -11,7 +11,7 @@ import {
   type BusinessExceptionInput,
   type CourtDecisionAction,
   type QueuedDecisionData,
-} from '@/lib/contracts/court-decision-command';
+} from '@/lib/contracts/court-command';
 
 const ACTION_META = {
   APPROVE: { label: '准奏', Icon: CheckCircle2, danger: false },

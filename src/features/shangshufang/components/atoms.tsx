@@ -10,7 +10,7 @@
  */
 
 import type { ButtonHTMLAttributes, CSSProperties, ReactNode } from 'react';
-import type { ImperialStatus, Priority } from '../types';
+import type { Priority } from '../types';
 import { assetUrl } from '@/lib/asset';
 
 /* ──────────────── 1. ImperialButton ──────────────── */
@@ -18,7 +18,7 @@ import { assetUrl } from '@/lib/asset';
 type ButtonVariant = 'gold' | 'primary' | 'secondary' | 'ghost' | 'danger';
 type ButtonSize = 'sm' | 'md';
 
-export interface ImperialButtonProps
+interface ImperialButtonProps
   extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'children' | 'disabled' | 'onClick' | 'size' | 'type'> {
   children: ReactNode;
   onClick?: () => void;
@@ -121,32 +121,9 @@ export function PriorityTag({ priority, size = 'sm' }: { priority: Priority; siz
   );
 }
 
-/* ──────────────── 3. StatusTag ──────────────── */
+/* ──────────────── 3. PortraitBanner（大幅立像头部） ──────────────── */
 
-const STATUS_META: Record<ImperialStatus, { label: string; color: string; bg: string; border: string }> = {
-  pending: { label: '待裁决', color: '#F0C66A', bg: 'rgba(240,198,106,0.10)', border: 'rgba(240,198,106,0.40)' },
-  running: { label: '执行中', color: '#6BA0FF', bg: 'rgba(107,160,255,0.10)', border: 'rgba(107,160,255,0.40)' },
-  completed: { label: '已完成', color: '#3DD68C', bg: 'rgba(61,214,140,0.10)', border: 'rgba(61,214,140,0.40)' },
-  risk: { label: '有风险', color: '#F43F5E', bg: 'rgba(244,63,94,0.10)', border: 'rgba(244,63,94,0.40)' },
-  archived: { label: '已归档', color: '#9AA3C4', bg: 'rgba(154,163,196,0.08)', border: 'rgba(154,163,196,0.34)' },
-};
-
-export function StatusTag({ status }: { status: ImperialStatus }) {
-  const m = STATUS_META[status];
-  return (
-    <span
-      className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-medium"
-      style={{ color: m.color, background: m.bg, border: `1px solid ${m.border}` }}
-    >
-      <span className="h-1.5 w-1.5 rounded-full" style={{ background: m.color }} aria-hidden />
-      {m.label}
-    </span>
-  );
-}
-
-/* ──────────────── 4. PortraitBanner（大幅立像头部） ──────────────── */
-
-export interface PortraitBannerProps {
+interface PortraitBannerProps {
   portrait: string;
   name: string;
   duty: string;

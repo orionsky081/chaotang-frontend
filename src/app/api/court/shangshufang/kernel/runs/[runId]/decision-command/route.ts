@@ -2,7 +2,7 @@ import {
   assertLiveDecisionChallenge,
   ZBrowserDecisionCommand,
   ZQueuedDecisionEnvelope,
-} from '@/lib/contracts/court-decision-command';
+} from '@/lib/contracts/court-command';
 import { postBackendJsonRequest } from '@/lib/courtos/server-backend';
 import {
   courtCommandFailure,

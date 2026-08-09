@@ -25,7 +25,7 @@
 
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { toast } from 'sonner';
 
@@ -39,7 +39,7 @@ const VERDICT_COLOR: Record<Verdict, string> = {
   查: '#5A7CB8',
 };
 
-export interface SealStampEvent {
+interface SealStampEvent {
   verdict: Verdict;
   /** 可选 · 印章下方的日期/备注 */
   note?: string;
@@ -55,14 +55,6 @@ declare global {
   interface WindowEventMap {
     'court:seal-stamp': CustomEvent<SealStampEvent>;
   }
-}
-
-/** 随手可调用的 hook */
-export function useImperialSeal() {
-  return useCallback((payload: SealStampEvent) => {
-    if (typeof window === 'undefined') return;
-    window.dispatchEvent(new CustomEvent('court:seal-stamp', { detail: payload }));
-  }, []);
 }
 
 /** 中文年月日（用天干/简化版） */

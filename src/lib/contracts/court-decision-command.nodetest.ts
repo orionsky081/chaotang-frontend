@@ -7,7 +7,7 @@ import {
   decisionPollingDisposition,
   MAX_DECISION_POLL_ATTEMPTS,
   ZBrowserDecisionCommand,
-} from './court-decision-command.ts';
+} from './court-command';
 
 test('待裁状态只显示 V1 准奏、补证、驳回动作', () => {
   assert.deepEqual(

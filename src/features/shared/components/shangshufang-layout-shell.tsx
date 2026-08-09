@@ -85,39 +85,3 @@ export function ShangshufangLayoutShell({
     </main>
   );
 }
-
-export function ShangshufangRailPanel({
-  title,
-  subtitle,
-  headerActions,
-  accent = '#F0C66A',
-  children,
-}: {
-  title: string;
-  subtitle?: string;
-  headerActions?: ReactNode;
-  accent?: string;
-  children: ReactNode;
-}) {
-  return (
-    <div
-      className="flex h-full min-h-0 flex-col overflow-hidden rounded-[8px] border shadow-[0_22px_70px_rgba(0,0,0,0.42)] backdrop-blur-xl"
-      style={{
-        borderColor: `${accent}30`,
-        background:
-          'linear-gradient(180deg, rgba(10,10,16,0.86), rgba(5,7,13,0.78) 52%, rgba(6,5,7,0.88)), radial-gradient(circle at 50% -12%, rgba(240,198,106,0.12), transparent 44%)',
-      }}
-    >
-      <div className="border-b px-4 py-3" style={{ borderColor: `${accent}20` }}>
-        <div className="flex items-center justify-between gap-2">
-          <div className="min-w-0 text-[9px] font-bold uppercase tracking-[0.22em]" style={{ color: accent }}>
-            {title}
-          </div>
-          {headerActions ? <div className="flex shrink-0 items-center gap-1.5">{headerActions}</div> : null}
-        </div>
-        {subtitle ? <div className="mt-1 text-[11px] leading-5 text-[#8F98B8]">{subtitle}</div> : null}
-      </div>
-      <div className="min-h-0 flex-1 overflow-y-auto p-3">{children}</div>
-    </div>
-  );
-}
