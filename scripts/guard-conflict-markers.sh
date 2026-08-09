@@ -12,7 +12,6 @@ set -euo pipefail
 markers='^(<<<<<<<|>>>>>>>)'
 hits=$(git grep -nE "$markers" -- \
   ':(exclude)scripts/guard-conflict-markers.sh' \
-  ':(exclude)frontend/scripts/guard-conflict-markers.sh' \
   '*.ts' '*.tsx' '*.js' '*.mjs' '*.json' '*.md' '*.css' 2>/dev/null || true)
 
 if [ -n "$hits" ]; then

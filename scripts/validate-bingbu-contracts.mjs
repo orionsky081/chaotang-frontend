@@ -1,8 +1,5 @@
-import fs from 'node:fs';
-import path from 'node:path';
-import { contractExists, contractRead, contractReaddir } from './lib/dev-contract-paths.mjs';
-
-const root = process.cwd();
+import { contractReaddir } from './lib/dev-contract-paths.mjs';
+import { assert, checkRequiredFiles, parseGoldenLines, parseJsonFiles, read } from './contract-assert.mjs';
 
 const requiredFiles = [
   'config/departments.registry.yaml',
@@ -36,21 +33,9 @@ const questionTypes = ['LEAD_QUALIFICATION', 'OPPORTUNITY_REVIEW', 'ACCOUNT_STRA
 const qualityGates = ['source_label_required', 'customer_claims_require_source', 'opportunity_stage_requires_evidence', 'forecast_requires_stage_and_evidence', 'formal_quote_requires_hubu_and_xingbu_review', 'discount_requires_margin_boundary', 'roi_or_revenue_claim_requires_hubu_review', 'external_commitment_requires_xingbu_review', 'customer_message_requires_rites_review_when_high_risk', 'competitor_claims_require_jinyiwei_evidence', 'no_unverified_customer_budget_claim', 'no_price_or_delivery_commitment_without_review', 'no_auto_send_customer_message', 'one_primary_sales_action_required', 'privacy_sensitive_crm_data_guard', 'sales_owner_or_gap_required', 'win_loss_reason_requires_evidence_or_gap'];
 const artifacts = ['客户跟进方案', '销售下一步行动卡', '客户会议计划', 'Discovery 问题清单', '客户决策链图', '大客户攻坚计划', '谈判策略', '报价前检查清单', '报价策略草案', '折扣审批建议', '客户回复草稿', '竞品 battlecard', '商机评分卡', 'Pipeline 风险表', 'Forecast 解释卡', 'Win/Loss 复盘', '渠道伙伴计划', '渠道政策草案', '续约/复购计划', '客户成功 QBR 大纲', '销售周会 agenda', '销售 playbook 片段', 'CRM 更新建议', '销售提成建议'];
 
-function read(rel) {
-  return contractRead(rel);
-}
+checkRequiredFiles(requiredFiles);
 
-function assert(condition, message) {
-  if (!condition) throw new Error(message);
-}
-
-for (const rel of requiredFiles) {
-  assert(contractExists(rel), `missing required file: ${rel}`);
-}
-
-for (const rel of requiredFiles.filter((item) => item.endsWith('.json'))) {
-  JSON.parse(read(rel));
-}
+parseJsonFiles(requiredFiles);
 
 const departmentsRegistry = read('config/departments.registry.yaml');
 assert(departmentsRegistry.includes('id: war'), 'departments registry must include war department');
@@ -92,7 +77,7 @@ for (const token of ['customer_claims', 'opportunity_stage', 'evidence_used', 'm
 const artifactSchema = JSON.stringify(JSON.parse(read('schemas/BingbuGeneratedArtifactV1.json')));
 for (const artifact of artifacts) assert(artifactSchema.includes(artifact), `BingbuGeneratedArtifactV1 missing artifact type: ${artifact}`);
 
-const goldenLines = read('evals/bingbu_cro_sales_office.golden.jsonl').split('\n').map((line) => line.trim()).filter(Boolean);
+const goldenLines = parseGoldenLines('evals/bingbu_cro_sales_office.golden.jsonl');
 assert(goldenLines.length >= 20, 'bingbu golden eval must include at least 20 cases');
 const ids = new Set();
 for (const line of goldenLines) {

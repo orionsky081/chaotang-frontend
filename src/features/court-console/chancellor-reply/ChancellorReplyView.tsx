@@ -10,7 +10,7 @@ import {
   WalletCards,
 } from 'lucide-react';
 
-import { GlassPanel } from '@/components/GlassPanel';
+import { GlassPanel } from '@/components/ui/glass-panel';
 import type { CriterionStatus } from '@/lib/contracts/fulfillment';
 
 import type {

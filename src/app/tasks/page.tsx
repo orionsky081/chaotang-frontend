@@ -12,7 +12,7 @@ import useSWR from 'swr';
 import { Search, Inbox, AlertTriangle, ArrowRight } from 'lucide-react';
 import { swrFetcher } from '@/lib/api';
 import type { TaskGroup } from '@/lib/contracts/swarm';
-import { GlassPanel } from '@/components/GlassPanel';
+import { GlassPanel } from '@/components/ui/glass-panel';
 import { PageHeaderShell } from '@/components/PageHeaderShell';
 
 interface TaskRow {

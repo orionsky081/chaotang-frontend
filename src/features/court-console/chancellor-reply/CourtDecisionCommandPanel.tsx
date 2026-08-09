@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { CheckCircle2, FileSearch, Gavel, XCircle } from 'lucide-react';
 
-import { GlassPanel } from '@/components/GlassPanel';
+import { GlassPanel } from '@/components/ui/glass-panel';
 import { api } from '@/lib/api';
 import {
   availableDecisionActions,

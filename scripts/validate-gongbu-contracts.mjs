@@ -1,8 +1,5 @@
-import fs from 'node:fs';
-import path from 'node:path';
-import { contractExists, contractRead, contractReaddir } from './lib/dev-contract-paths.mjs';
-
-const root = process.cwd();
+import { contractReaddir } from './lib/dev-contract-paths.mjs';
+import { assert, checkRequiredFiles, parseGoldenLines, parseJsonFiles, read } from './contract-assert.mjs';
 
 const requiredFiles = [
   'config/departments.registry.yaml',
@@ -103,21 +100,9 @@ const artifactTypes = [
   '跨部门复核单',
 ];
 
-function read(rel) {
-  return contractRead(rel);
-}
+checkRequiredFiles(requiredFiles);
 
-function assert(condition, message) {
-  if (!condition) throw new Error(message);
-}
-
-for (const rel of requiredFiles) {
-  assert(contractExists(rel), `missing required file: ${rel}`);
-}
-
-for (const rel of requiredFiles.filter((item) => item.endsWith('.json'))) {
-  JSON.parse(read(rel));
-}
+parseJsonFiles(requiredFiles);
 
 const departmentsRegistry = read('config/departments.registry.yaml');
 assert(/^\s*-\s*id:\s*works\b/m.test(departmentsRegistry), 'departments registry must register 工部 (id: works)');
@@ -180,10 +165,7 @@ for (const gate of qualityGates) {
   assert(qualitySchema.includes(gate), `GongbuQualityGateResultV1 missing gate: ${gate}`);
 }
 
-const goldenLines = read('evals/gongbu_cto_cpo_delivery_office.golden.jsonl')
-  .split('\n')
-  .map((line) => line.trim())
-  .filter(Boolean);
+const goldenLines = parseGoldenLines('evals/gongbu_cto_cpo_delivery_office.golden.jsonl');
 assert(goldenLines.length >= 20, 'gongbu golden eval must include at least 20 cases');
 
 const ids = new Set();

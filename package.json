@@ -2,6 +2,7 @@
   "name": "web",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@10.33.0",
   "scripts": {
     "prepare": "bash scripts/install-git-hooks.sh",
     "dev": "node scripts/next-with-base-path.mjs dev -p 3002 --webpack",
@@ -22,6 +23,7 @@
     "censor:watchdog": "bash scripts/chaotang-censor-watchdog.sh",
     "harness:screenshot-qa": "node scripts/release-screenshot-qa.mjs",
     "harness:three-axis-ui": "node scripts/validate-three-axis-ui.mjs",
+    "harness:dadian:showcase": "node scripts/dadian-showcase-gate.mjs",
     "verify:study-edict": "node scripts/verify-study-edict.mjs",
     "verify:departments:page-view": "node scripts/verify-six-department-page-view.mjs",
     "validate:courtos-core": "node scripts/validate-courtos-core-protocol.mjs",
@@ -31,7 +33,7 @@
     "eval:hubu": "node scripts/validate-hubu-contracts.mjs",
     "eval:libu": "node scripts/validate-libu-contracts.mjs",
     "eval:libu:adaptive": "node scripts/validate-libu-adaptive.mjs",
-    "eval:rites": "node scripts/validate-rites-contracts.mjs",
+    "eval:rites": "node scripts/validate-ritual-contracts.mjs",
     "eval:rites:adaptive": "node scripts/validate-rites-adaptive.mjs",
     "eval:ritual": "node scripts/validate-ritual-contracts.mjs",
     "eval:jinyiwei": "node scripts/validate-jinyiwei-contracts.mjs",
@@ -58,7 +60,6 @@
     "guard:independent-review": "node scripts/guard-independent-review.mjs"
   },
   "dependencies": {
-    "clsx": "^2.1.1",
     "lucide-react": "^1.14.0",
     "motion": "^12.38.0",
     "next": "16.2.6",
@@ -66,7 +67,6 @@
     "react-dom": "19.2.4",
     "sonner": "^2.0.7",
     "swr": "^2.4.1",
-    "tailwind-merge": "^3.5.0",
     "zod": "^4.4.1",
     "zustand": "^5.0.12"
   },

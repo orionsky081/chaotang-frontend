@@ -1,8 +1,5 @@
-import fs from 'node:fs';
-import path from 'node:path';
-import { contractExists, contractRead, contractReaddir } from './lib/dev-contract-paths.mjs';
-
-const root = process.cwd();
+import { contractReaddir } from './lib/dev-contract-paths.mjs';
+import { assert, checkRequiredFiles, parseGoldenLines, parseJsonFiles, read } from './contract-assert.mjs';
 
 const requiredFiles = [
   'config/departments.registry.yaml',
@@ -23,23 +20,8 @@ const requiredFiles = [
   'evals/hubu_cfo_office.golden.jsonl',
 ];
 
-function read(rel) {
-  return contractRead(rel);
-}
-
-function assert(condition, message) {
-  if (!condition) {
-    throw new Error(message);
-  }
-}
-
-for (const rel of requiredFiles) {
-  assert(contractExists(rel), `missing required file: ${rel}`);
-}
-
-for (const rel of requiredFiles.filter((item) => item.endsWith('.json'))) {
-  JSON.parse(read(rel));
-}
+checkRequiredFiles(requiredFiles);
+parseJsonFiles(requiredFiles);
 
 const registry = read('config/hubu.cfo_office.registry.yaml');
 for (const token of ['户部尚书', '度支司', '金库司', '计簿司', '价本司', '投审司', '稽核司']) {
@@ -72,10 +54,7 @@ const cfoSchema = JSON.parse(read('schemas/HubuCFOOpinionV1.json'));
 const schemaText = JSON.stringify(cfoSchema);
 assert(schemaText.includes('sourceLabel') || schemaText.includes('source_label'), 'HubuCFOOpinionV1 must include source label');
 
-const goldenLines = read('evals/hubu_cfo_office.golden.jsonl')
-  .split('\n')
-  .map((line) => line.trim())
-  .filter(Boolean);
+const goldenLines = parseGoldenLines('evals/hubu_cfo_office.golden.jsonl');
 assert(goldenLines.length >= 5, 'hubu golden eval must include at least 5 cases');
 for (const line of goldenLines) {
   const item = JSON.parse(line);

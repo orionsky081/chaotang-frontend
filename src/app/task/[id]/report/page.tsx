@@ -5,7 +5,7 @@ import Link from 'next/link';
 import useSWR from 'swr';
 
 import { DataState } from '@/components/DataState';
-import { GlassPanel } from '@/components/GlassPanel';
+import { GlassPanel } from '@/components/ui/glass-panel';
 import { PageHeaderShell } from '@/components/PageHeaderShell';
 import { swrFetcher } from '@/lib/api';
 import type { CourtRunPublicResult } from '@/lib/contracts/fulfillment';

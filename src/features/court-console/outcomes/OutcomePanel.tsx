@@ -4,7 +4,7 @@ import { FormEvent, useEffect, useMemo, useRef, useState } from 'react';
 import { Activity, CheckCircle2, Clock3, Scale, ShieldCheck } from 'lucide-react';
 import useSWR from 'swr';
 
-import { GlassPanel } from '@/components/GlassPanel';
+import { GlassPanel } from '@/components/ui/glass-panel';
 import { api } from '@/lib/api';
 import { pollUntilTerminal } from '@/lib/api/rest-polling';
 import {

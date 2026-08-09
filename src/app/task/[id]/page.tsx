@@ -12,7 +12,7 @@ import Link from 'next/link';
 import useSWR from 'swr';
 import { swrFetcher } from '@/lib/api';
 import type { TaskStatus } from '@/lib/contracts/task';
-import { GlassPanel } from '@/components/GlassPanel';
+import { GlassPanel } from '@/components/ui/glass-panel';
 import { PageHeaderShell } from '@/components/PageHeaderShell';
 import { DataState } from '@/components/DataState';
 

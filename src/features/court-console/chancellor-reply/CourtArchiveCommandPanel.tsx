@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Archive, CheckCircle2, ShieldCheck } from 'lucide-react';
 
-import { GlassPanel } from '@/components/GlassPanel';
+import { GlassPanel } from '@/components/ui/glass-panel';
 import { api } from '@/lib/api';
 import {
   archiveCommandAvailable,

@@ -40,6 +40,7 @@ export const FEATURE_REGISTRY = {
   imperial: { owner: 'frontend:imperial', publicEntry: 'route-owned', status: 'legacy', migrationTarget: 'promote a public entry or merge into canonical owner', deadlineVersion: 'v0.2' },
   intel: { owner: 'frontend:intel', publicEntry: 'index.ts (IntelPage)', status: 'active' },
   'landing-merge': { owner: 'frontend:landing-merge', publicEntry: 'route-owned', status: 'legacy', migrationTarget: 'promote a public entry or merge into canonical owner', deadlineVersion: 'v0.2' },
+  landing: { owner: 'frontend:landing', publicEntry: 'components/WelcomeLanding', status: 'active' },
   learning: { owner: 'frontend:learning', publicEntry: 'index.ts (LiveBacktest)', status: 'active' },
   libu: { owner: 'frontend:libu', publicEntry: 'index.ts', status: 'active' },
   lifu: { owner: 'frontend:lifu', publicEntry: 'route-owned', status: 'legacy', migrationTarget: 'promote a public entry or merge into canonical owner', deadlineVersion: 'v0.2' },

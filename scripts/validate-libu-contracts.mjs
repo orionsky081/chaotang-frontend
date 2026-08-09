@@ -1,8 +1,5 @@
-import fs from 'node:fs';
-import path from 'node:path';
-import { contractExists, contractRead, contractReaddir } from './lib/dev-contract-paths.mjs';
-
-const root = process.cwd();
+import { contractReaddir } from './lib/dev-contract-paths.mjs';
+import { assert, checkRequiredFiles, parseGoldenLines, parseJsonFiles, read } from './contract-assert.mjs';
 
 const requiredFiles = [
   'config/departments.registry.yaml',
@@ -27,23 +24,9 @@ const requiredFiles = [
   'evals/libu_chro_cao_office.golden.jsonl',
 ];
 
-function read(rel) {
-  return contractRead(rel);
-}
+checkRequiredFiles(requiredFiles);
 
-function assert(condition, message) {
-  if (!condition) {
-    throw new Error(message);
-  }
-}
-
-for (const rel of requiredFiles) {
-  assert(contractExists(rel), `missing required file: ${rel}`);
-}
-
-for (const rel of requiredFiles.filter((item) => item.endsWith('.json'))) {
-  JSON.parse(read(rel));
-}
+parseJsonFiles(requiredFiles);
 
 const registry = read('config/libu.chro_cao_office.registry.yaml');
 for (const token of ['吏部尚书', '官制司', '选才司', '考功司', '薪酬司', '人事司', '劳关司', '行政司']) {
@@ -126,10 +109,7 @@ for (const art of ['JD_岗位说明书', 'PIP绩效改进计划', 'RACI表', '�
   assert(artifactSchema.includes(art), `LibuGeneratedArtifactV1 missing artifact type: ${art}`);
 }
 
-const goldenLines = read('evals/libu_chro_cao_office.golden.jsonl')
-  .split('\n')
-  .map((line) => line.trim())
-  .filter(Boolean);
+const goldenLines = parseGoldenLines('evals/libu_chro_cao_office.golden.jsonl');
 assert(goldenLines.length >= 20, 'libu golden eval must include at least 20 cases');
 const ids = new Set();
 for (const line of goldenLines) {
