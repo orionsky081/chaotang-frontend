@@ -1,0 +1,16 @@
+{
+  "_comment": "朝堂OS 部门码单一真相源 (SSOT · 铁律2/6)。前端 (dept.ts/agent.ts) 与后端 (src/contracts/departments.py) 同读此文件,禁各侧维护平行副本。字段: agentCode=丞相/大臣码(11码主键) · nameCn=中文名 · swarmId=L4上书房蜂群sid(无则null) · pageCode=前端六部门页码(无则null)。改任一码先改这里,两侧回归测试(dept-ssot.nodetest.ts / test_contracts_departments.py)看守漂移。",
+  "departments": [
+    { "agentCode": "prime_minister", "nameCn": "丞相",   "nameEn": "Prime Minister",    "tier": "core",           "emoji": "👑", "color": "#D4A84B", "swarmId": null,                        "pageCode": null },
+    { "agentCode": "scribe",         "nameCn": "史官",   "nameEn": "Scribe",            "tier": "core",           "emoji": "📜", "color": "#9AA3C4", "swarmId": null,                        "pageCode": null },
+    { "agentCode": "li_bu",          "nameCn": "吏部",   "nameEn": "Personnel",         "tier": "ministry",       "emoji": "👥", "color": "#6BA0FF", "swarmId": "libu_org_execution_swarm",  "pageCode": null },
+    { "agentCode": "hu_bu",          "nameCn": "户部",   "nameEn": "Revenue",           "tier": "ministry",       "emoji": "💰", "color": "#F0C66A", "swarmId": "hubu_finance_swarm",        "pageCode": "finance" },
+    { "agentCode": "li_bu_rites",    "nameCn": "礼部",   "nameEn": "Rites",             "tier": "ministry",       "emoji": "🎨", "color": "#C070D0", "swarmId": "libu_communication_swarm",  "pageCode": "market" },
+    { "agentCode": "bing_bu",        "nameCn": "兵部",   "nameEn": "Military",          "tier": "ministry",       "emoji": "⚔️", "color": "#F43F5E", "swarmId": "bingbu_strategy_swarm",     "pageCode": "ops" },
+    { "agentCode": "xing_bu",        "nameCn": "刑部",   "nameEn": "Justice",           "tier": "ministry",       "emoji": "⚖️", "color": "#3DD68C", "swarmId": "xingbu_legal_risk_swarm",   "pageCode": "legal" },
+    { "agentCode": "gong_bu",        "nameCn": "工部",   "nameEn": "Works",             "tier": "ministry",       "emoji": "🛠", "color": "#4A82F0", "swarmId": null,                        "pageCode": null },
+    { "agentCode": "qin_tian_jian",  "nameCn": "钦天监", "nameEn": "Observatory",       "tier": "special_bureau", "emoji": "🔭", "color": "#B794F4", "swarmId": null,                        "pageCode": null },
+    { "agentCode": "jin_yi_wei",     "nameCn": "锦衣卫", "nameEn": "Imperial Guard",    "tier": "special_bureau", "emoji": "🛰", "color": "#FB923C", "swarmId": "jinyiwei_intel_swarm",      "pageCode": "guard" },
+    { "agentCode": "tai_yi_yuan",    "nameCn": "太医院", "nameEn": "Imperial Physician","tier": "special_bureau", "emoji": "🌿", "color": "#34D399", "swarmId": null,                        "pageCode": "physician" }
+  ]
+}

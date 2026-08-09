@@ -1,0 +1,58 @@
+{
+  "version": "1.0.0",
+  "productName": "朝堂OS",
+  "positioning": "面向 20–300 人新能源设备项目制企业的正式报价准入回奏台",
+  "primaryActor": "新能源设备项目制企业老板或正式授权的经营决策人",
+  "productWedge": {
+    "id": "new-energy-equipment-formal-quote-admission",
+    "nameCn": "新能源设备项目正式报价准入",
+    "entryRoute": "/court-briefing",
+    "businessOutcome": "在正式报价发给客户前，给出可审计的准奏、补证或驳回建议；业务例外完成双确认，并在签约、交付、回款后追加偏差卡。",
+    "requiredEvidence": [
+      "客户需求、技术规格或 RFP",
+      "对外报价明细和报价口径",
+      "内部成本与目标毛利",
+      "BOM、工程量或工时估算",
+      "交付计划、资源安排和明确责任人",
+      "付款节点、账期及回款条件",
+      "质保、违约、赔偿和其他合同关键条款"
+    ],
+    "outcomeMetrics": [
+      "gross_margin",
+      "delivery_days",
+      "payment_days"
+    ],
+    "humanDecisionActions": [
+      "approve",
+      "request_evidence",
+      "reject"
+    ],
+    "businessException": {
+      "requiresDualConfirmation": true,
+      "exceptionEligibleGate": "quote_margin_below_forbidden_threshold",
+      "nonOverrideableGates": [
+        "quote_inputs_invalid",
+        "quote_margin_policy_missing"
+      ],
+      "requiredFields": [
+        "例外原因",
+        "金额或风险敞口",
+        "责任人",
+        "补救措施",
+        "复核日期",
+        "最终批准人"
+      ]
+    },
+    "forbiddenAutomaticActions": [
+      "付款",
+      "签约",
+      "对外发送",
+      "采购下单"
+    ]
+  },
+  "designPartnerScenario": {
+    "id": "storage-pack-quote-delivery",
+    "labelCn": "储能设备 / 电池 PACK",
+    "decisionQuestion": "判断 100MWh 冷库储能项目是否应进入正式报价，并形成可执行的报价与交付边界。"
+  }
+}

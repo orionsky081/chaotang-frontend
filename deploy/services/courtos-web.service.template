@@ -1,0 +1,30 @@
+# courtos-web.service.template
+# 安装：cp deploy/services/courtos-web.service.template ~/.config/systemd/user/courtos-web.service
+#        systemctl --user daemon-reload && systemctl --user enable --now courtos-web
+
+[Unit]
+Description=CourtOS Web (Next.js production, basePath=/chaotang on :3050)
+After=network-online.target
+Wants=network-online.target
+# 防 restart thrash：1 分钟内 3 次崩就停在 failed 状态
+StartLimitBurst=3
+StartLimitIntervalSec=60
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/chaotang-os/frontend
+Environment=PATH=/home/ubuntu/.npm-global/bin:/home/ubuntu/.local/bin:/usr/local/bin:/usr/bin:/bin
+Environment=NODE_ENV=production
+Environment=BASE_PATH=/chaotang
+Environment=PORT=3050
+EnvironmentFile=-/opt/chaotang-os/frontend/.env.local
+ExecStart=/home/ubuntu/.npm-global/bin/pnpm start
+TimeoutStopSec=5
+KillSignal=SIGTERM
+Restart=always
+RestartSec=2
+StandardOutput=append:/var/log/chaotang/courtos-web.log
+StandardError=append:/var/log/chaotang/courtos-web.log
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Throne Feature Boundary",
+    "subtitle": "Public view candidates versus private command and presentation capabilities",
+    "output": "throne-boundary.html"
+  },
+  "components": [
+    { "id": "routes", "type": "frontend", "label": "Throne routes", "sublabel": "compose · brief · help", "pos": [40, 250], "size": [140, 60] },
+    { "id": "views", "type": "frontend", "label": "Public view candidates", "sublabel": "Attendant · RunCard · Edict · Seal", "pos": [270, 150], "size": [170, 64], "tag": "allowlist" },
+    { "id": "compose", "type": "security", "label": "CeremonialCompose", "sublabel": "dispatch + category selection", "pos": [270, 360], "size": [170, 64], "tag": "private / boundary risk" },
+    { "id": "plain", "type": "frontend", "label": "Plain-language mapper", "sublabel": "status → presentation copy", "pos": [510, 150], "size": [160, 60], "tag": "private" },
+    { "id": "shared", "type": "frontend", "label": "Shared UI", "sublabel": "PromptSuggester · imperial UI", "pos": [510, 360], "size": [160, 60] },
+    { "id": "api", "type": "backend", "label": "Chaotang REST client", "sublabel": "decreeDraft · decreeDispatch", "pos": [740, 360], "size": [170, 64], "tag": "same-origin REST" }
+  ],
+  "boundaries": [
+    { "kind": "region", "label": "throne public surface", "wraps": ["views"] },
+    { "kind": "security-group", "label": "private implementation boundary", "wraps": ["compose", "plain"] }
+  ],
+  "connections": [
+    { "from": "routes", "to": "views", "label": "render", "variant": "emphasis" },
+    { "from": "routes", "to": "compose", "label": "compose route", "variant": "security", "fromSide": "bottom", "toSide": "left" },
+    { "from": "views", "to": "plain", "label": "presentation copy", "fromSide": "right", "toSide": "left", "route": "orthogonal-h", "labelAt": [475, 228] },
+    { "from": "compose", "to": "shared", "label": "suggestion UI", "fromSide": "right", "toSide": "left", "route": "orthogonal-h" },
+    { "from": "compose", "to": "api", "label": "draft + dispatch", "variant": "security", "labelAt": [705, 338] }
+  ],
+  "cards": [
+    { "dot": "emerald", "title": "Allowed from index.ts", "items": ["Attendant and AttendantLine", "RunCard", "ImperialEdict", "SealStamp", "StarterPrompts"] },
+    { "dot": "rose", "title": "Must remain private", "items": ["CeremonialCompose: command dispatch", "plain-language: implementation mapper", "any category selection or state interpretation"] }
+  ]
+}

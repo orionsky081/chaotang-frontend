@@ -1,0 +1,419 @@
+{
+  "offices": [
+    {
+      "officeId": "hubu.duzhi",
+      "departmentAgentCode": "hu_bu",
+      "nameCn": "度支司",
+      "capabilities": ["budget_planning", "cashflow_forecasting", "fund_allocation"],
+      "workerKinds": ["department_engine", "deterministic_tool"],
+      "riskClasses": ["financial"],
+      "evidenceKinds": ["budget", "forecast", "ledger"],
+      "enabled": true
+    },
+    {
+      "officeId": "hubu.jinku",
+      "departmentAgentCode": "hu_bu",
+      "nameCn": "金库司",
+      "capabilities": ["treasury_management", "liquidity_control", "payment_control"],
+      "workerKinds": ["department_engine", "deterministic_tool"],
+      "riskClasses": ["financial", "operational"],
+      "evidenceKinds": ["bank_statement", "payment_record", "cash_position"],
+      "enabled": true
+    },
+    {
+      "officeId": "hubu.jibu",
+      "departmentAgentCode": "hu_bu",
+      "nameCn": "计簿司",
+      "capabilities": ["accounting", "management_reporting", "reconciliation"],
+      "workerKinds": ["department_engine", "deterministic_tool"],
+      "riskClasses": ["financial"],
+      "evidenceKinds": ["ledger", "financial_statement", "reconciliation"],
+      "enabled": true
+    },
+    {
+      "officeId": "hubu.jiaben",
+      "departmentAgentCode": "hu_bu",
+      "nameCn": "价本司",
+      "capabilities": ["cost_accounting", "pricing_analysis", "margin_analysis"],
+      "workerKinds": ["department_engine", "deterministic_tool"],
+      "riskClasses": ["financial", "commercial"],
+      "evidenceKinds": ["cost_sheet", "price_list", "margin_model"],
+      "enabled": true
+    },
+    {
+      "officeId": "hubu.toushen",
+      "departmentAgentCode": "hu_bu",
+      "nameCn": "投审司",
+      "capabilities": ["investment_review", "capital_budgeting", "return_analysis"],
+      "workerKinds": ["flow_engine", "department_engine"],
+      "riskClasses": ["financial", "strategic"],
+      "evidenceKinds": ["investment_memo", "valuation", "approval_record"],
+      "enabled": true
+    },
+    {
+      "officeId": "hubu.jihe",
+      "departmentAgentCode": "hu_bu",
+      "nameCn": "稽核司",
+      "capabilities": ["financial_audit", "control_testing", "anomaly_detection"],
+      "workerKinds": ["flow_engine", "deterministic_tool"],
+      "riskClasses": ["financial", "compliance"],
+      "evidenceKinds": ["audit_workpaper", "control_log", "exception_report"],
+      "enabled": true
+    },
+
+    {
+      "officeId": "libu.guanzhi",
+      "departmentAgentCode": "li_bu",
+      "nameCn": "官制司",
+      "capabilities": ["organization_design", "role_design", "workforce_governance"],
+      "workerKinds": ["department_engine", "generic_agent"],
+      "riskClasses": ["organizational"],
+      "evidenceKinds": ["org_chart", "role_charter", "governance_policy"],
+      "enabled": true
+    },
+    {
+      "officeId": "libu.xuancai",
+      "departmentAgentCode": "li_bu",
+      "nameCn": "选才司",
+      "capabilities": ["recruiting", "candidate_assessment", "talent_sourcing"],
+      "workerKinds": ["flow_engine", "generic_agent"],
+      "riskClasses": ["people", "privacy"],
+      "evidenceKinds": ["job_profile", "assessment_record", "candidate_pipeline"],
+      "enabled": true
+    },
+    {
+      "officeId": "libu.kaogong",
+      "departmentAgentCode": "li_bu",
+      "nameCn": "考功司",
+      "capabilities": ["performance_management", "promotion_review", "goal_calibration"],
+      "workerKinds": ["flow_engine", "department_engine"],
+      "riskClasses": ["people", "organizational"],
+      "evidenceKinds": ["performance_record", "goal_record", "review_minutes"],
+      "enabled": true
+    },
+    {
+      "officeId": "libu.xinchou",
+      "departmentAgentCode": "li_bu",
+      "nameCn": "薪酬司",
+      "capabilities": ["compensation_design", "payroll_review", "benefits_design"],
+      "workerKinds": ["department_engine", "deterministic_tool"],
+      "riskClasses": ["people", "financial"],
+      "evidenceKinds": ["payroll", "salary_band", "benefits_policy"],
+      "enabled": true
+    },
+    {
+      "officeId": "libu.renshi",
+      "departmentAgentCode": "li_bu",
+      "nameCn": "人事司",
+      "capabilities": ["employee_lifecycle", "personnel_records", "onboarding"],
+      "workerKinds": ["flow_engine", "generic_agent"],
+      "riskClasses": ["people", "privacy"],
+      "evidenceKinds": ["personnel_file", "onboarding_record", "employment_record"],
+      "enabled": true
+    },
+    {
+      "officeId": "libu.laoguan",
+      "departmentAgentCode": "li_bu",
+      "nameCn": "劳关司",
+      "capabilities": ["employee_relations", "grievance_handling", "labor_negotiation"],
+      "workerKinds": ["flow_engine", "generic_agent"],
+      "riskClasses": ["people", "legal"],
+      "evidenceKinds": ["case_record", "meeting_minutes", "labor_agreement"],
+      "enabled": true
+    },
+    {
+      "officeId": "libu.xingzheng",
+      "departmentAgentCode": "li_bu",
+      "nameCn": "行政司",
+      "capabilities": ["administration", "policy_operations", "workplace_services"],
+      "workerKinds": ["department_engine", "generic_agent"],
+      "riskClasses": ["operational"],
+      "evidenceKinds": ["service_record", "administrative_policy", "asset_register"],
+      "enabled": true
+    },
+
+    {
+      "officeId": "liburites.pinpai",
+      "departmentAgentCode": "li_bu_rites",
+      "nameCn": "品牌司",
+      "capabilities": ["brand_strategy", "brand_governance", "brand_identity"],
+      "workerKinds": ["department_engine", "generic_agent"],
+      "riskClasses": ["reputational", "strategic"],
+      "evidenceKinds": ["brand_guideline", "brand_research", "brand_plan"],
+      "enabled": true
+    },
+    {
+      "officeId": "liburites.kequn",
+      "departmentAgentCode": "li_bu_rites",
+      "nameCn": "客群司",
+      "capabilities": ["audience_research", "segmentation", "customer_insight"],
+      "workerKinds": ["department_engine", "deterministic_tool"],
+      "riskClasses": ["commercial", "privacy"],
+      "evidenceKinds": ["research_report", "segment_model", "survey"],
+      "enabled": true
+    },
+    {
+      "officeId": "liburites.wenxuan",
+      "departmentAgentCode": "li_bu_rites",
+      "nameCn": "文宣司",
+      "capabilities": ["content_strategy", "copywriting", "editorial_planning"],
+      "workerKinds": ["generic_agent", "flow_engine"],
+      "riskClasses": ["reputational"],
+      "evidenceKinds": ["content_brief", "editorial_calendar", "copy_draft"],
+      "enabled": true
+    },
+    {
+      "officeId": "liburites.zhaoshang",
+      "departmentAgentCode": "li_bu_rites",
+      "nameCn": "招商司",
+      "capabilities": ["partnership_marketing", "campaign_recruitment", "sponsor_development"],
+      "workerKinds": ["flow_engine", "generic_agent"],
+      "riskClasses": ["commercial", "reputational"],
+      "evidenceKinds": ["partner_profile", "campaign_brief", "sponsor_proposal"],
+      "enabled": true
+    },
+    {
+      "officeId": "liburites.gongguan",
+      "departmentAgentCode": "li_bu_rites",
+      "nameCn": "公关司",
+      "capabilities": ["public_relations", "crisis_communication", "media_relations"],
+      "workerKinds": ["flow_engine", "generic_agent"],
+      "riskClasses": ["reputational", "crisis"],
+      "evidenceKinds": ["press_record", "response_plan", "media_brief"],
+      "enabled": true
+    },
+    {
+      "officeId": "liburites.chuanbo",
+      "departmentAgentCode": "li_bu_rites",
+      "nameCn": "传播渠道司",
+      "capabilities": ["channel_strategy", "media_planning", "campaign_distribution"],
+      "workerKinds": ["department_engine", "deterministic_tool"],
+      "riskClasses": ["commercial", "reputational"],
+      "evidenceKinds": ["channel_plan", "media_schedule", "distribution_report"],
+      "enabled": true
+    },
+    {
+      "officeId": "liburites.shenci",
+      "departmentAgentCode": "li_bu_rites",
+      "nameCn": "审辞司",
+      "capabilities": ["message_review", "claim_substantiation", "tone_governance"],
+      "workerKinds": ["flow_engine", "generic_agent"],
+      "riskClasses": ["reputational", "compliance"],
+      "evidenceKinds": ["review_record", "claim_evidence", "approved_copy"],
+      "enabled": true
+    },
+
+    {
+      "officeId": "bingbu.buzhen",
+      "departmentAgentCode": "bing_bu",
+      "nameCn": "布阵司",
+      "capabilities": ["sales_strategy", "territory_planning", "account_planning"],
+      "workerKinds": ["department_engine", "flow_engine"],
+      "riskClasses": ["commercial", "strategic"],
+      "evidenceKinds": ["sales_plan", "territory_map", "account_plan"],
+      "enabled": true
+    },
+    {
+      "officeId": "bingbu.shangji",
+      "departmentAgentCode": "bing_bu",
+      "nameCn": "商机司",
+      "capabilities": ["lead_qualification", "opportunity_management", "pipeline_analysis"],
+      "workerKinds": ["flow_engine", "deterministic_tool"],
+      "riskClasses": ["commercial"],
+      "evidenceKinds": ["lead_record", "opportunity_record", "pipeline_report"],
+      "enabled": true
+    },
+    {
+      "officeId": "bingbu.gongjian",
+      "departmentAgentCode": "bing_bu",
+      "nameCn": "攻坚司",
+      "capabilities": ["complex_deal", "competitive_strategy", "deal_orchestration"],
+      "workerKinds": ["flow_engine", "generic_agent"],
+      "riskClasses": ["commercial", "strategic"],
+      "evidenceKinds": ["deal_room", "competitive_brief", "decision_log"],
+      "enabled": true
+    },
+    {
+      "officeId": "bingbu.jiace",
+      "departmentAgentCode": "bing_bu",
+      "nameCn": "价策司",
+      "capabilities": ["commercial_pricing", "discount_governance", "proposal_strategy"],
+      "workerKinds": ["department_engine", "deterministic_tool"],
+      "riskClasses": ["commercial", "financial"],
+      "evidenceKinds": ["quote", "discount_approval", "proposal"],
+      "enabled": true
+    },
+    {
+      "officeId": "bingbu.qudao",
+      "departmentAgentCode": "bing_bu",
+      "nameCn": "渠道司",
+      "capabilities": ["sales_channel", "partner_sales", "channel_governance"],
+      "workerKinds": ["department_engine", "flow_engine"],
+      "riskClasses": ["commercial", "third_party"],
+      "evidenceKinds": ["partner_agreement", "channel_plan", "partner_scorecard"],
+      "enabled": true
+    },
+    {
+      "officeId": "bingbu.xiaoyun",
+      "departmentAgentCode": "bing_bu",
+      "nameCn": "销运司",
+      "capabilities": ["sales_operations", "quota_management", "revenue_forecasting"],
+      "workerKinds": ["department_engine", "deterministic_tool"],
+      "riskClasses": ["commercial", "operational"],
+      "evidenceKinds": ["quota_plan", "forecast", "sales_dashboard"],
+      "enabled": true
+    },
+    {
+      "officeId": "bingbu.kecheng",
+      "departmentAgentCode": "bing_bu",
+      "nameCn": "客成司",
+      "capabilities": ["customer_success", "renewal_management", "adoption_growth"],
+      "workerKinds": ["flow_engine", "generic_agent"],
+      "riskClasses": ["commercial", "customer"],
+      "evidenceKinds": ["success_plan", "renewal_record", "health_score"],
+      "enabled": true
+    },
+
+    {
+      "officeId": "xingbu.qiyue",
+      "departmentAgentCode": "xing_bu",
+      "nameCn": "契约司",
+      "capabilities": ["contract_review", "contract_drafting", "obligation_management"],
+      "workerKinds": ["flow_engine", "generic_agent"],
+      "riskClasses": ["legal", "commercial"],
+      "evidenceKinds": ["contract", "clause_library", "obligation_register"],
+      "enabled": true
+    },
+    {
+      "officeId": "xingbu.gongsi",
+      "departmentAgentCode": "xing_bu",
+      "nameCn": "公司司",
+      "capabilities": ["corporate_governance", "entity_management", "board_support"],
+      "workerKinds": ["department_engine", "generic_agent"],
+      "riskClasses": ["legal", "governance"],
+      "evidenceKinds": ["corporate_record", "board_minutes", "resolution"],
+      "enabled": true
+    },
+    {
+      "officeId": "xingbu.hegui",
+      "departmentAgentCode": "xing_bu",
+      "nameCn": "合规司",
+      "capabilities": ["regulatory_compliance", "policy_compliance", "compliance_monitoring"],
+      "workerKinds": ["flow_engine", "deterministic_tool"],
+      "riskClasses": ["compliance", "regulatory"],
+      "evidenceKinds": ["regulation", "control_record", "compliance_report"],
+      "enabled": true
+    },
+    {
+      "officeId": "xingbu.zhengsong",
+      "departmentAgentCode": "xing_bu",
+      "nameCn": "争讼司",
+      "capabilities": ["criminal_litigation", "civil_litigation", "dispute_resolution"],
+      "workerKinds": ["flow_engine", "generic_agent"],
+      "riskClasses": ["legal", "litigation"],
+      "evidenceKinds": ["case_file", "pleading", "legal_opinion"],
+      "enabled": true
+    },
+    {
+      "officeId": "xingbu.laofa",
+      "departmentAgentCode": "xing_bu",
+      "nameCn": "劳法司",
+      "capabilities": ["employment_law", "labor_compliance", "workplace_investigation"],
+      "workerKinds": ["flow_engine", "generic_agent"],
+      "riskClasses": ["legal", "people"],
+      "evidenceKinds": ["employment_agreement", "investigation_record", "labor_policy"],
+      "enabled": true
+    },
+    {
+      "officeId": "xingbu.zhichan",
+      "departmentAgentCode": "xing_bu",
+      "nameCn": "知产司",
+      "capabilities": ["intellectual_property", "trademark_management", "license_review"],
+      "workerKinds": ["department_engine", "generic_agent"],
+      "riskClasses": ["legal", "intellectual_property"],
+      "evidenceKinds": ["ip_register", "trademark_record", "license"],
+      "enabled": true
+    },
+    {
+      "officeId": "xingbu.fayun",
+      "departmentAgentCode": "xing_bu",
+      "nameCn": "法运司",
+      "capabilities": ["legal_operations", "matter_management", "legal_spend"],
+      "workerKinds": ["department_engine", "deterministic_tool"],
+      "riskClasses": ["legal", "operational"],
+      "evidenceKinds": ["matter_record", "legal_invoice", "service_metric"],
+      "enabled": true
+    },
+
+    {
+      "officeId": "gongbu.fangan",
+      "departmentAgentCode": "gong_bu",
+      "nameCn": "方案司",
+      "capabilities": ["solution_design", "technical_planning", "requirements_translation"],
+      "workerKinds": ["department_engine", "generic_agent"],
+      "riskClasses": ["technical", "delivery"],
+      "evidenceKinds": ["solution_design", "technical_spec", "requirement"],
+      "enabled": true
+    },
+    {
+      "officeId": "gongbu.wuliao",
+      "departmentAgentCode": "gong_bu",
+      "nameCn": "物料司",
+      "capabilities": ["material_planning", "procurement_coordination", "inventory_control"],
+      "workerKinds": ["department_engine", "deterministic_tool"],
+      "riskClasses": ["supply", "operational"],
+      "evidenceKinds": ["bill_of_materials", "purchase_record", "inventory_record"],
+      "enabled": true
+    },
+    {
+      "officeId": "gongbu.jindu",
+      "departmentAgentCode": "gong_bu",
+      "nameCn": "进度司",
+      "capabilities": ["schedule_management", "milestone_tracking", "dependency_management"],
+      "workerKinds": ["flow_engine", "deterministic_tool"],
+      "riskClasses": ["delivery", "operational"],
+      "evidenceKinds": ["project_schedule", "milestone_record", "dependency_log"],
+      "enabled": true
+    },
+    {
+      "officeId": "gongbu.zhiliang",
+      "departmentAgentCode": "gong_bu",
+      "nameCn": "质量司",
+      "capabilities": ["quality_assurance", "acceptance_testing", "defect_management"],
+      "workerKinds": ["flow_engine", "deterministic_tool"],
+      "riskClasses": ["quality", "delivery"],
+      "evidenceKinds": ["test_report", "inspection_record", "defect_log"],
+      "enabled": true
+    },
+    {
+      "officeId": "gongbu.xianchang",
+      "departmentAgentCode": "gong_bu",
+      "nameCn": "现场司",
+      "capabilities": ["site_operations", "field_coordination", "safety_coordination"],
+      "workerKinds": ["flow_engine", "generic_agent"],
+      "riskClasses": ["operational", "safety"],
+      "evidenceKinds": ["site_log", "field_report", "safety_record"],
+      "enabled": true
+    },
+    {
+      "officeId": "gongbu.jiaofu",
+      "departmentAgentCode": "gong_bu",
+      "nameCn": "交付司",
+      "capabilities": ["delivery_management", "handover", "release_coordination"],
+      "workerKinds": ["flow_engine", "department_engine"],
+      "riskClasses": ["delivery", "customer"],
+      "evidenceKinds": ["delivery_record", "handover_record", "release_note"],
+      "enabled": true
+    },
+    {
+      "officeId": "gongbu.chengnuo",
+      "departmentAgentCode": "gong_bu",
+      "nameCn": "承诺司",
+      "capabilities": ["commitment_governance", "service_level_management", "acceptance_governance"],
+      "workerKinds": ["department_engine", "deterministic_tool"],
+      "riskClasses": ["delivery", "contractual"],
+      "evidenceKinds": ["commitment_register", "service_level_record", "acceptance_record"],
+      "enabled": true
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "schemaVersion": "fulfillment.v1",
+  "criterionStatuses": [
+    "achieved",
+    "not_achieved",
+    "unverifiable"
+  ],
+  "completionStatuses": [
+    "complete",
+    "incomplete"
+  ],
+  "riskLevels": [
+    "LOW",
+    "MEDIUM",
+    "HIGH",
+    "CRITICAL"
+  ],
+  "uncertaintyLevels": [
+    "LOW",
+    "MEDIUM",
+    "HIGH",
+    "EXTREME"
+  ],
+  "truthLabels": [
+    "TRUE_SWARM",
+    "MULTI_AGENT_WORKFLOW",
+    "SINGLE_AGENT",
+    "RULE_ENGINE",
+    "SIMULATED",
+    "FALLBACK"
+  ],
+  "verificationOutcomes": [
+    "VERIFIED",
+    "CONTRADICTED",
+    "UNAVAILABLE"
+  ],
+  "agentContributionStatuses": [
+    "AVAILABLE",
+    "UNAVAILABLE"
+  ],
+  "archiveRefStatuses": [
+    "UNSEALED",
+    "SEALED"
+  ],
+  "criterionResultFields": [
+    "criterion_id",
+    "criterion",
+    "status",
+    "execution_artifact_refs",
+    "domain_evidence_refs",
+    "independent_evidence_refs",
+    "verifier_findings",
+    "confidence",
+    "gap_or_next_action"
+  ],
+  "fulfillmentMatrixFields": [
+    "schema_version",
+    "mission_id",
+    "objective_restatement",
+    "criterion_results",
+    "disagreements",
+    "unknowns",
+    "residual_risks",
+    "recommended_next_action",
+    "completion_status"
+  ],
+  "replyFields": [
+    "conclusion",
+    "fulfillment_matrix",
+    "key_reasons",
+    "evidence_refs",
+    "risk_level",
+    "uncertainty_level",
+    "foresight_brief_refs",
+    "budget_and_timeline",
+    "alternatives",
+    "disagreements",
+    "matters_for_imperial_decision",
+    "next_step",
+    "truth_label",
+    "department_memorials",
+    "verification_records",
+    "council_review",
+    "agent_contributions",
+    "archive_ref"
+  ],
+  "courtRunPublicResultFields": [
+    "runtime_authority",
+    "run_id",
+    "revision",
+    "status",
+    "chancellor_message",
+    "permitted_actions",
+    "reply"
+  ]
+}
