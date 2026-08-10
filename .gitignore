@@ -71,3 +71,6 @@ public/.intel-prev-snapshot.json
 data/*.local.json
 .env.box
 *.db.bak*
+-e 
+# UI design screenshots (analysis only)
+ui-design/
