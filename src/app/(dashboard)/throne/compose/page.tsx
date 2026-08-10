@@ -160,7 +160,7 @@ function EdictScroll() {
             <Sparkles size={12} className="shrink-0" />
             <span>
               <b className="font-semibold">御前润色回执：</b>
-              润色后只展示文字预览，不会在卷轴内直接启动跳转。
+              润色后只展示文字预览，不会在卷轴内直接启动蜂群。
             </span>
           </div>
 

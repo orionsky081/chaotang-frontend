@@ -232,7 +232,7 @@ function CommandCenterInner() {
                       奏折
                     </h2>
                     <div className="mt-1 text-[11px]" style={{ color: SCROLL_PAPER.inkSoft }}>
-                      军机处 · 上书房式会审主卷
+                      军机处·上书房式会审主卷
                     </div>
                   </div>
                   <Seal />
@@ -337,7 +337,7 @@ function CommandCenterInner() {
         <div className="flex flex-wrap items-center justify-between gap-2">
           <span className="text-[11px] text-[#8A7A52]">军机处 · JSON REST + 后端事件轮询</span>
           <div className="flex flex-wrap gap-2">
-            <FooterCapsule icon={<ScrollText size={13} />} onClick={() => router.push('/court-briefing')}>展开辐政</FooterCapsule>
+            <FooterCapsule icon={<ScrollText size={13} />} onClick={() => router.push('/court-briefing')}>展开辅政</FooterCapsule>
             <FooterCapsule icon={<ScrollText size={13} />} onClick={() => router.push('/court-briefing')}>发圣旨</FooterCapsule>
             <FooterCapsule icon={<FilePlus2 size={13} />} onClick={() => router.push('/command-center?view=cases')}>案卷立案</FooterCapsule>
             <FooterCapsule icon={<Users size={13} />} onClick={() => router.push('/command-center?view=council')}>召六部会审</FooterCapsule>
@@ -453,14 +453,15 @@ function KV({ k, v, mono = false }: { k: string; v: string; mono?: boolean }) {
   );
 }
 
-/** 红色「奏」章 */
+/** 红色「機密」章 */
 function Seal() {
   return (
     <div
-      className="flex h-12 w-12 shrink-0 items-center justify-center rounded-sm border-2 leading-none"
+      className="flex h-12 w-12 shrink-0 flex-col items-center justify-center rounded-sm border-2 leading-none"
       style={{ borderColor: '#b23a2e', color: '#b23a2e', background: 'rgba(150,40,32,0.10)', transform: 'rotate(-4deg)' }}
     >
-      <span className="text-[22px] font-bold" style={{ fontFamily: 'var(--font-serif)' }}>奏</span>
+      <span className="text-[16px] font-bold" style={{ fontFamily: 'var(--font-serif)' }}>機</span>
+      <span className="text-[16px] font-bold" style={{ fontFamily: 'var(--font-serif)' }}>密</span>
     </div>
   );
 }
