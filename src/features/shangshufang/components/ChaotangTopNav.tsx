@@ -68,14 +68,16 @@ export function ChaotangTopNav({
   return (
     <header className="relative z-50 flex h-11 items-center gap-4 border-b border-[rgba(192,170,120,0.2)] bg-[rgba(0,0,0,0.6)] px-4 backdrop-blur-xl lg:px-6">
       <Link href="/overview" className="flex shrink-0 items-center gap-2">
-        {/* 金色圆形官印/鼎图标 */}
-        <svg viewBox="0 0 32 32" className="h-7 w-7" fill="none">
-          {/* 圆形外框 */}
-          <circle cx="16" cy="16" r="14" stroke="#F0C66A" strokeWidth="1.5" fill="none"/>
-          {/* 内部抽象鼎/印章图案 */}
-          <path d="M10 10h12v2H10zM11 12h10v6H11zM9 18h14v2H9zM12 20v3h8v-3" stroke="#F0C66A" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-          {/* 顶部帽翅装饰 */}
-          <path d="M13 8c0-2 1.5-3 3-3s3 1 3 3" stroke="#F0C66A" strokeWidth="1" strokeLinecap="round" fill="none"/>
+        {/* 金色龙形剪影图标 */}
+        <svg viewBox="0 0 512 512" className="h-7 w-7" fill="none">
+          <defs>
+            <linearGradient id="nav-gold" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#F5D98C"/>
+              <stop offset=".5" stop-color="#F0C66A"/>
+              <stop offset="1" stop-color="#B88934"/>
+            </linearGradient>
+          </defs>
+          <path fill="url(#nav-gold)" d="M280 58C340 52 400 80 440 130c35 42 50 95 48 145-2 55-23 105-58 140-35 33-80 50-125 53-15 2-27-10-25-25 2-15 14-25 29-27 39-4 73-18 99-44 30-30 44-70 42-112-2-42-18-80-45-108-30-32-70-52-115-47-30 3-50 20-60 45-12 30-10 65 5 95 15 30 40 50 70 60 25 8 40 25 35 47-5 18-25 28-45 23-25-7-37-30-27-53 4-10-6-18-16-14-17 7-27 27-22 50 8 32 35 52 68 57 32 5 60-10 72-35 15-32 2-70-25-90-30-22-67-38-87-65-23-30-28-67-18-97 13-40 45-70 85-86 15-7 28-12 40-14 35-4 65 4 85 22 20 18 33 42 37 70 2 12 13 20 25 16 11-4 15-16 11-28-10-38-33-73-68-98C362 32 315 22 270 28c-35 5-65 24-85 54-25 38-33 86-23 133 8 37 30 67 58 90-20-10-42-27-55-50-17-30-20-65-10-97 13-40 45-70 85-86 15-7 28-12 40-14zM175 55c-10-15-7-30 5-37 8-4 15 0 15 10 0 7-7 17-17 24zm20-10c-5-13 3-25 15-27 8-1 12 4 10 12-2 8-10 15-20 18z"/>
         </svg>
         <span className="hidden flex-col leading-tight sm:flex">
           <span className="font-serif text-[13px] font-bold tracking-[0.12em] text-[#F5E9C9]">朝堂OS</span>

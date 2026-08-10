@@ -1,20 +1,87 @@
-<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="256" height="256" rx="56" fill="#0B0A12"/>
-  <rect x="22" y="22" width="212" height="212" rx="42" fill="url(#bg)" stroke="#F0C66A" stroke-width="4"/>
-  <path d="M77 80L98 106L128 74L158 106L179 80V144C179 160.569 165.569 174 149 174H107C90.4315 174 77 160.569 77 144V80Z" fill="url(#gold)" stroke="#F5E9C9" stroke-width="6" stroke-linejoin="round"/>
-  <path d="M101 150H155" stroke="#0B0A12" stroke-opacity="0.32" stroke-width="8" stroke-linecap="round"/>
-  <path d="M92 96L77 80L62 96L77 112L92 96Z" fill="#F0C66A"/>
-  <path d="M164 96L179 80L194 96L179 112L164 96Z" fill="#F0C66A"/>
-  <circle cx="128" cy="67" r="11" fill="#F0C66A"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
   <defs>
-    <linearGradient id="bg" x1="32" y1="24" x2="220" y2="236" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#15111C"/>
-      <stop offset="1" stop-color="#09070D"/>
-    </linearGradient>
-    <linearGradient id="gold" x1="128" y1="74" x2="128" y2="174" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#F8DEA0"/>
-      <stop offset="0.52" stop-color="#F0C66A"/>
-      <stop offset="1" stop-color="#B98524"/>
+    <linearGradient id="g" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F5D98C"/>
+      <stop offset=".5" stop-color="#F0C66A"/>
+      <stop offset="1" stop-color="#B88934"/>
     </linearGradient>
   </defs>
+  <!-- 龙身主体：沿未闭合圆环的填充剪影 -->
+  <path fill="url(#g)" d="
+    M280 58
+    C340 52 400 80 440 130
+    C475 172 490 225 488 275
+    C486 330 465 380 430 415
+    C395 448 350 465 305 468
+    L305 468
+    C290 470 278 458 280 443
+    C282 428 294 418 309 416
+    C348 412 382 398 408 372
+    C438 342 452 302 450 260
+    C448 218 432 180 405 152
+    C375 120 335 100 290 105
+    C260 108 240 125 230 150
+    C218 180 220 215 235 245
+    C250 275 275 295 305 305
+    C330 313 345 330 340 352
+    C335 370 315 380 295 375
+    C270 368 258 345 268 322
+    L268 322
+    C272 312 262 304 252 308
+    C235 315 225 335 230 358
+    C238 390 265 410 298 415
+    C330 420 358 405 370 380
+    C385 348 372 310 345 290
+    C315 268 278 252 258 225
+    C235 195 230 158 245 128
+    C260 98 290 82 320 78
+    C350 74 375 82 395 100
+    C415 118 428 142 432 170
+    L432 170
+    C434 182 445 190 457 186
+    C468 182 472 170 468 158
+    C458 120 435 85 400 60
+    C362 32 315 22 270 28
+    C235 33 205 52 185 82
+    C160 120 152 168 162 215
+    C170 252 192 282 220 305
+    C200 295 178 278 165 255
+    C148 225 145 190 155 158
+    C168 118 200 88 240 72
+    C255 65 268 60 280 58Z
+  "/>
+  <!-- 龙头细节 -->
+  <path fill="url(#g)" d="
+    M185 82
+    C170 95 160 112 158 130
+    L158 130
+    C156 142 145 150 133 146
+    C122 142 118 130 122 118
+    C130 92 150 70 175 55
+    C190 46 208 42 225 45
+    C210 50 195 62 185 82Z
+  "/>
+  <!-- 龙角 -->
+  <path fill="url(#g)" d="
+    M175 55
+    C165 40 168 25 180 18
+    C188 14 195 18 195 28
+    C195 35 188 45 178 52Z
+  "/>
+  <path fill="url(#g)" d="
+    M195 45
+    C190 32 198 20 210 18
+    C218 17 222 22 220 30
+    C218 38 210 45 200 48Z
+  "/>
+  <!-- 龙尾螺旋 -->
+  <path fill="url(#g)" d="
+    M305 468
+    C320 475 338 472 348 460
+    C360 446 358 425 345 415
+    C332 405 315 408 308 420
+    C302 430 308 442 318 448
+    C325 452 332 448 332 440
+    C332 435 328 432 322 434
+  "/>
 </svg>
