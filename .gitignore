@@ -74,3 +74,4 @@ data/*.local.json
 -e 
 # UI design screenshots (analysis only)
 ui-design/
+screenshot*.png
