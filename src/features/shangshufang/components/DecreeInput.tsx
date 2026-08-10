@@ -1,13 +1,16 @@
 'use client';
 
 /**
- * DecreeInput · 底部 · 御前·下旨
- * 精确匹配效果图：左问丞相 | 中输入框+按钮 | 右问钦天监
+ * DecreeInput · 底部面板 · 上书房
+ * 精确匹配效果图：
+ *   左侧头像+问丞相 | 输入框+问按钮 | 润色/下旨/密旨/丞相/钦天监 | 右侧问钦天监+头像
  */
 
 import { useEffect, useId, useRef, useState, type KeyboardEvent as ReactKeyboardEvent, type RefObject } from 'react';
-import { FileText, Lock, MessageSquare, Scroll, Telescope } from 'lucide-react';
+import { FileText, Lock, MessageSquare, Paperclip, Scroll, Telescope } from 'lucide-react';
 
+import { assetUrl } from '@/lib/asset';
+import { SHANGSHUFANG_ASSETS } from '../constants';
 import type { DecreeMode, DecreeState } from '../types';
 
 export type AskTarget = 'chancellor' | 'mentor';
@@ -62,7 +65,6 @@ export function DecreeInput({
 }: DecreeInputProps) {
   const isComposingRef = useRef(false);
   const [localValue, setLocalValue] = useState(value);
-  const visibleModeOptions = MODE_OPTIONS.filter(m => availableModes.includes(m.mode));
   const isSecret = mode === 'secret';
   const isMentorAsk = mode === 'ask' && askTarget === 'mentor';
   const accent = isSecret ? SECRET : GOLD;
@@ -98,6 +100,9 @@ export function DecreeInput({
     if (!isComposingRef.current) onChange(nextValue);
   };
 
+  // 按效果图顺序：润色 → 下旨 → 密旨 → 丞相 → 钦天监
+  const displayOptions = MODE_OPTIONS.filter(m => availableModes.includes(m.mode));
+
   return (
     <section
       data-three-axis-decree-input
@@ -105,7 +110,7 @@ export function DecreeInput({
       aria-label="御前对话栏"
     >
       {/* 主容器 */}
-      <div className="w-full border-t" style={{ borderColor: 'rgba(240,198,106,0.25)', background: 'rgba(5,7,13,0.95)', backdropFilter: 'blur(14px)' }}>
+      <div className="w-full" style={{ background: 'rgba(5,7,13,0.95)', backdropFilter: 'blur(14px)' }}>
         {/* 顶部金线 */}
         <div
           aria-hidden
@@ -114,67 +119,96 @@ export function DecreeInput({
         />
 
         {/* 内容区 */}
-        <div className="mx-auto flex max-w-[1400px] items-center gap-3 px-4 py-2.5">
-          {/* 左侧：问丞相 */}
+        <div className="mx-auto flex max-w-[1400px] items-center gap-2.5 px-4 py-2.5">
+
+          {/* ─── 左侧：问丞相 ─── */}
           <button
             type="button"
             onClick={() => { onModeChange('ask'); onAskTargetChange?.('chancellor'); }}
             className="flex shrink-0 items-center gap-2 rounded-lg px-2 py-1.5 transition hover:bg-white/5"
           >
-            <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-[#F0C66A]/45 bg-[#F0C66A]/10 font-serif text-[13px] font-bold text-[#F0C66A]">问</span>
+            {/* 方形头像 */}
+            <div className="h-10 w-10 shrink-0 overflow-hidden rounded-md border border-[#F0C66A]/30 bg-[#1a1a1a]">
+              <img
+                src={assetUrl(SHANGSHUFANG_ASSETS.portraitChancellor)}
+                alt="丞相"
+                className="h-full w-full object-cover"
+                loading="lazy"
+              />
+            </div>
             <span className="hidden flex-col leading-tight sm:flex">
-              <span className="text-[11px] font-medium text-[#F5E9C9]">问丞相</span>
-              <span className="text-[9px] text-[#8A9BB8]">先压判断与缺证</span>
+              <span className="text-[12px] font-medium text-[#F5E9C9]">问丞相</span>
+              <span className="text-[9px] text-[#8A9BB8]">历史判断与辩证</span>
             </span>
           </button>
 
-          {/* 中间：润色 + 输入框 + 按钮组 */}
+          {/* ─── 中间：输入框 + 问按钮 ─── */}
           <div className="flex min-w-0 flex-1 items-center gap-2">
-            {/* 润色按钮 */}
+            {/* 输入框 */}
+            <div className="relative min-w-0 flex-1">
+              <textarea
+                ref={inputRef}
+                value={localValue}
+                onChange={(e) => handleTextValue(e.currentTarget.value)}
+                onCompositionStart={() => { isComposingRef.current = true; }}
+                onCompositionEnd={(e) => {
+                  isComposingRef.current = false;
+                  setLocalValue(e.currentTarget.value);
+                  onChange(e.currentTarget.value);
+                }}
+                onKeyDown={(e) => {
+                  if (isImeCompositionKey(e)) return;
+                  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); onSend(); }
+                }}
+                rows={1}
+                maxLength={2000}
+                placeholder={
+                  mode === 'order'
+                    ? '直接说您的裁决：准、驳回、补证或让谁先办。'
+                    : isSecret
+                      ? '密旨直发全蜂群：让各司直陈利弊、冲突与风险。'
+                      : isMentorAsk
+                        ? '问钦天监：下一步该怎么问、先补什么证据？'
+                        : '问丞相：这件事该先准、先驳回，还是先补证？'
+                }
+                className="w-full resize-none rounded-md px-3 py-2 pl-8 text-[12.5px] leading-[1.45] text-[#F5E9C9] placeholder:text-[#8F835F] focus:outline-none"
+                style={{ background: 'rgba(0,0,0,0.45)', border: `1px solid rgba(255,255,255,0.08)`, fontFamily: 'var(--font-serif)', height: '38px' }}
+              />
+              {/* 回形针图标 */}
+              <Paperclip
+                size={13}
+                className="absolute left-2.5 top-1/2 -translate-y-1/2 text-[#6B6B6B] pointer-events-none"
+              />
+            </div>
+
+            {/* 问按钮 */}
             <button
               type="button"
-              onClick={handlePolishClick}
+              onClick={handlePrimarySubmit}
               disabled={busy}
-              className="inline-flex h-8 shrink-0 items-center gap-1 rounded-full border px-2.5 text-[11px] font-semibold transition hover:brightness-110 disabled:opacity-50"
-              style={{ borderColor: 'rgba(255,255,255,0.10)', background: 'rgba(255,255,255,0.025)', color: '#9AA3C4' }}
+              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md font-serif text-[15px] font-bold transition hover:brightness-110 disabled:opacity-50"
+              style={{ background: '#1a1a1a', color: GOLD, border: `1px solid ${GOLD}44` }}
+              aria-label="发送"
             >
-              <FileText size={11} />
-              润色
+              问
             </button>
 
-            {/* 输入框 */}
-            <textarea
-              ref={inputRef}
-              value={localValue}
-              onChange={(e) => handleTextValue(e.currentTarget.value)}
-              onCompositionStart={() => { isComposingRef.current = true; }}
-              onCompositionEnd={(e) => {
-                isComposingRef.current = false;
-                setLocalValue(e.currentTarget.value);
-                onChange(e.currentTarget.value);
-              }}
-              onKeyDown={(e) => {
-                if (isImeCompositionKey(e)) return;
-                if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); onSend(); }
-              }}
-              rows={1}
-              maxLength={2000}
-              placeholder={
-                mode === 'order'
-                  ? '直接说您的裁决：准、驳回、补证或让谁先办。'
-                  : isSecret
-                    ? '密旨直发全蜂群：让各司直陈利弊、冲突与风险。'
-                    : isMentorAsk
-                      ? '问钦天监：下一步该怎么问、先补什么证据？'
-                      : '问丞相：这件事该先准、先驳回，还是先补证？'
-              }
-              className="min-w-0 flex-1 resize-none rounded-full px-3.5 py-2 text-[12.5px] leading-[1.45] text-[#F5E9C9] placeholder:text-[#8F835F] focus:outline-none"
-              style={{ background: 'rgba(0,0,0,0.4)', border: `1px solid ${accent}44`, fontFamily: 'var(--font-serif)', height: '36px' }}
-            />
-
-            {/* 模式按钮组 */}
+            {/* 功能按钮组：润色 → 下旨 → 密旨 → 丞相 → 钦天监 */}
             <div className="flex shrink-0 items-center gap-1.5">
-              {visibleModeOptions.map((item) => {
+              {/* 润色按钮（特殊样式，不参与 mode 切换） */}
+              <button
+                type="button"
+                onClick={handlePolishClick}
+                disabled={busy}
+                className="inline-flex h-8 items-center justify-center gap-1 rounded-md border px-2.5 text-[11px] font-semibold transition hover:brightness-110 disabled:opacity-50"
+                style={{ borderColor: 'rgba(255,255,255,0.08)', background: 'rgba(255,255,255,0.04)', color: '#C8C8C8' }}
+              >
+                <FileText size={11} />
+                润色
+              </button>
+
+              {/* mode 按钮 */}
+              {displayOptions.map((item) => {
                 const selected = mode === item.mode && (item.mode !== 'ask' || item.askTarget === askTarget);
                 const Icon = item.icon === 'ask' ? MessageSquare : item.icon === 'mentor' ? Telescope : item.icon === 'order' ? Scroll : Lock;
                 const tone = item.mode === 'secret' ? SECRET : GOLD;
@@ -185,11 +219,11 @@ export function DecreeInput({
                     onClick={() => handleModeButtonClick(item)}
                     aria-label={item.label}
                     title={item.label}
-                    className="inline-flex h-8 items-center justify-center gap-1 rounded-full border px-2.5 text-[11px] font-semibold transition-all hover:brightness-110"
+                    className="inline-flex h-8 items-center justify-center gap-1 rounded-md border px-2.5 text-[11px] font-semibold transition-all hover:brightness-110"
                     style={{
-                      borderColor: selected ? `${tone}66` : 'rgba(255,255,255,0.10)',
-                      background: selected ? `${tone}1F` : 'rgba(255,255,255,0.025)',
-                      color: selected ? tone : '#9AA3C4',
+                      borderColor: selected ? `${tone}55` : 'rgba(255,255,255,0.08)',
+                      background: selected ? `${tone}18` : 'rgba(255,255,255,0.04)',
+                      color: selected ? tone : '#C8C8C8',
                     }}
                   >
                     <Icon size={11} />
@@ -200,17 +234,25 @@ export function DecreeInput({
             </div>
           </div>
 
-          {/* 右侧：问钦天监 */}
+          {/* ─── 右侧：问钦天监 ─── */}
           <button
             type="button"
             onClick={() => { onModeChange('ask'); onAskTargetChange?.('mentor'); }}
             className="flex shrink-0 items-center gap-2 rounded-lg px-2 py-1.5 transition hover:bg-white/5"
           >
             <span className="hidden flex-col items-end leading-tight sm:flex">
-              <span className="text-[11px] font-medium text-[#F5E9C9]">问钦天监</span>
-              <span className="text-[9px] text-[#8A9BB8]">先看时机与风险</span>
+              <span className="text-[12px] font-medium text-[#F5E9C9]">问钦天监</span>
+              <span className="text-[9px] text-[#8A9BB8]">先机判断与风险</span>
             </span>
-            <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-[#9B6CF6]/45 bg-[#9B6CF6]/10 font-serif text-[13px] font-bold text-[#9B6CF6]">问</span>
+            {/* 方形头像 */}
+            <div className="h-10 w-10 shrink-0 overflow-hidden rounded-md border border-[#9B6CF6]/30 bg-[#1a1a1a]">
+              <img
+                src={assetUrl(SHANGSHUFANG_ASSETS.portraitWang)}
+                alt="钦天监"
+                className="h-full w-full object-cover"
+                loading="lazy"
+              />
+            </div>
           </button>
         </div>
 
