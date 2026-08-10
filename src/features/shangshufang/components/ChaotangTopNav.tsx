@@ -18,6 +18,8 @@ const NAV_ITEMS = [
 
 function isActive(pathname: string, href: string) {
   if (href === '/overview') return pathname === href;
+  // 上书房特殊处理：/shangshufang 重定向到 /court-briefing
+  if (href === '/shangshufang') return pathname === '/shangshufang' || pathname.startsWith('/court-briefing') || pathname.startsWith('/shangshufang');
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
@@ -66,7 +68,13 @@ export function ChaotangTopNav({
   return (
     <header className="relative z-50 flex h-11 items-center gap-4 border-b border-[rgba(192,170,120,0.2)] bg-[rgba(0,0,0,0.6)] px-4 backdrop-blur-xl lg:px-6">
       <Link href="/overview" className="flex shrink-0 items-center gap-2">
-        <span className="grid h-7 w-7 place-items-center rounded-full border border-[#F0C66A]/45 bg-[#F0C66A]/10 font-serif text-[12px] font-bold text-[#F0C66A]">朝</span>
+        {/* 金色龙形图标 */}
+        <svg viewBox="0 0 32 32" className="h-7 w-7" fill="none">
+          <path d="M16 2C10 2 5 7 5 12c0 3 1.5 5.5 3.5 7.5L16 28l7.5-8.5C25.5 17.5 27 15 27 12c0-5-5-10-11-10z" fill="#F0C66A" opacity="0.9"/>
+          <path d="M16 4c-4.5 0-8 3.5-8 8 0 2.5 1.2 4.5 2.8 6.2L16 24l5.2-5.8C22.8 16.5 24 14.5 24 12c0-4.5-3.5-8-8-8z" fill="#D4A84B"/>
+          <path d="M13 10c0-1.7 1.3-3 3-3s3 1.3 3 3-1.3 3-3 3-3-1.3-3-3z" fill="#F5E9C9"/>
+          <path d="M16 5l1 3h3l-2.5 2 1 3L16 11l-2.5 2 1-3L12 8h3l1-3z" fill="#F0C66A" stroke="#D4A84B" strokeWidth="0.5"/>
+        </svg>
         <span className="hidden flex-col leading-tight sm:flex">
           <span className="font-serif text-[13px] font-bold tracking-[0.12em] text-[#F5E9C9]">朝堂OS</span>
           <span className="text-[8px] font-medium tracking-[0.28em] text-[#8A9BB8]">上值朝·AI 智能办公</span>
