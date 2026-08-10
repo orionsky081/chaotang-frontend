@@ -50,7 +50,7 @@ export function ChancellorTodayCard() {
           }
         >
           {state.status === 'ready'
-            ? '真 · 丞相 LIVE'
+            ? '丞相在线'
             : state.status === 'loading'
               ? '拟旨中…'
               : state.status === 'error'
