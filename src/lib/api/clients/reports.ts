@@ -2,6 +2,7 @@
 
 import type { Report } from '@/lib/contracts/report';
 import { API_PATHS } from '../gateway';
+import { interceptMock } from '../mock/interceptor';
 import { ApiRequestOptions, buildApiRequestInit, buildAbsoluteApiUrl, normalizeApiResponseText, parseJson } from '../http';
 
 export class ApiError extends Error {
@@ -16,6 +17,10 @@ export class ApiError extends Error {
 }
 
 async function requestJson<T>(path: string, init: ApiRequestOptions = {}): Promise<T> {
+  // Mock 拦截
+  const mockData = interceptMock<T>(path, init.method ?? 'GET');
+  if (mockData !== undefined) return mockData;
+
   const url = buildAbsoluteApiUrl(path);
   const requestInit = buildApiRequestInit({ cache: 'no-store', ...init });
   const response = typeof window === 'undefined'

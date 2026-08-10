@@ -1,0 +1,76 @@
+{
+  "headline": {
+    "signalId": "sig-001",
+    "title": "储能行业政策变动：欧盟新电池法规将于2027年全面生效",
+    "summary": "欧盟新电池法规要求所有进口电池必须提供碳足迹声明和电池护照，影响我司出口业务。"
+  },
+  "stats": {
+    "total": 12,
+    "urgent": 3,
+    "verified": 8,
+    "sourceCount": 15
+  },
+  "sourceLabel": "LIVE · 后端情报投影",
+  "dispatchTargets": ["hu_bu", "gong_bu", "xing_bu"],
+  "signals": [
+    {
+      "id": "sig-001",
+      "title": "欧盟新电池法规2027年全面生效",
+      "summary": "欧盟新电池法规要求所有进口电池必须提供碳足迹声明和电池护照，影响我司出口业务。需提前准备合规材料。",
+      "departmentCode": "hu_bu",
+      "level": "critical",
+      "processStatus": "verified",
+      "sourceGrade": "real",
+      "sources": [
+        { "name": "欧盟官方公报", "url": "https://eur-lex.europa.eu" },
+        { "name": "中国电池工业协会", "url": "https://www.cbia.org.cn" }
+      ]
+    },
+    {
+      "id": "sig-002",
+      "title": "锂电池原材料碳酸锂价格持续下跌",
+      "summary": "碳酸锂价格从年初8万元/吨跌至5.2万元/吨，跌幅35%。需评估对BOM成本和报价策略的影响。",
+      "departmentCode": "hu_bu",
+      "level": "warning",
+      "processStatus": "verified",
+      "sourceGrade": "real",
+      "sources": [
+        { "name": "上海有色网", "url": "https://www.smm.cn" }
+      ]
+    },
+    {
+      "id": "sig-003",
+      "title": "竞品阳光电源推出新一代储能系统",
+      "summary": "阳光电源发布PowerTitan 2.0，能量密度提升30%，成本降低15%。对我司产品竞争力构成直接威胁。",
+      "departmentCode": "gong_bu",
+      "level": "warning",
+      "processStatus": "packed",
+      "sourceGrade": "real",
+      "sources": [
+        { "name": "阳光电源官网", "url": "https://www.sungrowpower.com" }
+      ]
+    },
+    {
+      "id": "sig-004",
+      "title": "华南区域电网储能招标公告",
+      "summary": "广东电网发布2026年第二批储能设备集中采购招标，总容量500MWh，投标截止日期9月15日。",
+      "departmentCode": "bing_bu",
+      "level": "info",
+      "processStatus": "new",
+      "sourceGrade": "real",
+      "sources": [
+        { "name": "中国招标投标公共服务平台", "url": "http://www.cebpubservice.com" }
+      ]
+    },
+    {
+      "id": "sig-005",
+      "title": "某客户投诉产品质量问题",
+      "summary": "深圳某客户反馈储能PACK出现电芯不一致问题，已派工部技术人员现场排查。",
+      "departmentCode": "gong_bu",
+      "level": "warning",
+      "processStatus": "routed",
+      "sourceGrade": "real",
+      "sources": []
+    }
+  ]
+}

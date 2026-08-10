@@ -34,6 +34,7 @@ import {
 } from '@/lib/contracts/shangshufang-loop';
 import type { CourtRunPublicResult } from '@/lib/contracts/fulfillment';
 import { buildAbsoluteApiUrl, buildApiRequestInit, normalizeApiResponseText, parseJson } from '../http';
+import { interceptMock } from '../mock/interceptor';
 
 interface ApiEnvelope<T> {
   success?: boolean;
@@ -105,6 +106,10 @@ async function requestApi<T>(
   init: Parameters<typeof buildApiRequestInit>[0] = {},
   acceptedStatuses: number[] = [],
 ): Promise<T> {
+  // Mock 拦截
+  const mockData = interceptMock<T>(apiPath, init.method ?? 'GET');
+  if (mockData !== undefined) return mockData;
+
   const requestInit = buildApiRequestInit({ cache: 'no-store', ...init });
   const url = buildAbsoluteApiUrl(apiPath);
   const response = typeof window === 'undefined'

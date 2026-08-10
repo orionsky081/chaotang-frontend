@@ -1,4 +1,5 @@
 import { buildAbsoluteApiUrl, buildApiRequestInit, normalizeApiResponseText, parseJson } from './http';
+import { interceptMock } from './mock/interceptor';
 
 export const API_PATHS = {
   admin: {
@@ -79,6 +80,10 @@ export function buildApiPath(path: string): string {
 }
 
 async function requestJson<T>(path: string, init: ApiRequestOptions = {}): Promise<T> {
+  // Mock 拦截
+  const mockData = interceptMock<T>(path, init.method ?? 'GET');
+  if (mockData !== undefined) return mockData;
+
   const response = await fetch(buildApiPath(path), buildApiRequestInit(init));
   const payloadText = normalizeApiResponseText(await response.text().catch(() => ''), init);
 

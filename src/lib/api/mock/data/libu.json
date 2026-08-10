@@ -1,0 +1,46 @@
+{
+  "departments": [
+    {
+      "code": "hu_bu",
+      "name": "户部",
+      "description": "财政 · 度支 · 资源",
+      "status": "active",
+      "headCount": 12
+    },
+    {
+      "code": "bing_bu",
+      "name": "兵部",
+      "description": "任务 · 作战 · 执行",
+      "status": "active",
+      "headCount": 8
+    },
+    {
+      "code": "gong_bu",
+      "name": "工部",
+      "description": "研发 · 供应链 · 产线",
+      "status": "active",
+      "headCount": 15
+    },
+    {
+      "code": "xing_bu",
+      "name": "刑部",
+      "description": "风控 · 法务 · 合规",
+      "status": "active",
+      "headCount": 6
+    },
+    {
+      "code": "li_bu",
+      "name": "吏部",
+      "description": "组织 · 人才 · 考绩",
+      "status": "active",
+      "headCount": 10
+    },
+    {
+      "code": "li_bu_rites",
+      "name": "礼部",
+      "description": "品牌 · 客户 · 对外",
+      "status": "active",
+      "headCount": 7
+    }
+  ]
+}

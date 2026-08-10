@@ -1,0 +1,26 @@
+[
+  {
+    "id": "report-001",
+    "title": "铭硕电池Q3报价准入回奏",
+    "template": "报价准入",
+    "metadata": { "author": "丞相", "department": "户部" },
+    "createdAt": "2026-08-09T10:30:00+08:00",
+    "content": "铭硕储能PACK报价单已完成BOM成本核验，毛利率28.5%，符合准入标准。建议准奏。"
+  },
+  {
+    "id": "report-002",
+    "title": "华南项目延期责任报告",
+    "template": "交付验收",
+    "metadata": { "author": "兵部", "department": "兵部" },
+    "createdAt": "2026-08-08T14:20:00+08:00",
+    "content": "华南区域3个项目延期原因分析及责任认定。"
+  },
+  {
+    "id": "report-003",
+    "title": "新签合同法务复核报告",
+    "template": "合同审核",
+    "metadata": { "author": "刑部", "department": "刑部" },
+    "createdAt": "2026-08-07T09:15:00+08:00",
+    "content": "5份新签合同中2份存在付款条件倒挂，已标注风险点。"
+  }
+]

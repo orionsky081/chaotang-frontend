@@ -1,0 +1,44 @@
+{
+  "tasks": [
+    {
+      "taskId": "task-20260810-001",
+      "title": "铭硕电池Q3报价准入",
+      "status": "completed",
+      "sourceLabel": "LIVE",
+      "updatedAt": "2026-08-10T10:30:00+08:00"
+    },
+    {
+      "taskId": "task-20260809-002",
+      "title": "华南项目交付验收",
+      "status": "in_progress",
+      "sourceLabel": "LIVE",
+      "updatedAt": "2026-08-09T14:20:00+08:00"
+    },
+    {
+      "taskId": "task-20260808-003",
+      "title": "新签合同法务复核",
+      "status": "awaiting_evidence",
+      "sourceLabel": "MIXED",
+      "updatedAt": "2026-08-08T09:15:00+08:00"
+    }
+  ],
+  "memorials": [
+    {
+      "id": "mem-001",
+      "title": "铭硕电池Q3报价准入回奏",
+      "status": "archived",
+      "sourceLabel": "LIVE",
+      "createdAt": "2026-08-09T11:30:00+08:00"
+    }
+  ],
+  "decisions": [
+    {
+      "id": "dec-001",
+      "memorialId": "mem-001",
+      "action": "approve",
+      "comment": "毛利率28.5%，符合准入标准。",
+      "actor": "皇帝",
+      "createdAt": "2026-08-09T11:35:00+08:00"
+    }
+  ]
+}

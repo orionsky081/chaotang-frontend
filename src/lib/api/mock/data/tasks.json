@@ -1,0 +1,18 @@
+{
+  "tasks": [
+    {
+      "taskId": "task-20260810-001",
+      "title": "铭硕电池Q3报价准入",
+      "status": "completed",
+      "sourceLabel": "LIVE",
+      "updatedAt": "2026-08-10T10:30:00+08:00"
+    },
+    {
+      "taskId": "task-20260809-002",
+      "title": "华南项目交付验收",
+      "status": "in_progress",
+      "sourceLabel": "LIVE",
+      "updatedAt": "2026-08-09T14:20:00+08:00"
+    }
+  ]
+}

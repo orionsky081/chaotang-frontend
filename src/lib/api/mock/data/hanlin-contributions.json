@@ -1,0 +1,18 @@
+{
+  "contributions": [
+    {
+      "id": "contrib-001",
+      "skillName": "报价审核",
+      "contributor": "翰林院",
+      "description": "新增储能PACK报价审核规则",
+      "createdAt": "2026-08-09T10:00:00+08:00"
+    },
+    {
+      "id": "contrib-002",
+      "skillName": "合同分析",
+      "contributor": "刑部",
+      "description": "更新合同风险识别模型",
+      "createdAt": "2026-08-08T15:00:00+08:00"
+    }
+  ]
+}

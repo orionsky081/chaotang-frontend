@@ -1,0 +1,22 @@
+{
+  "recommendations": [
+    {
+      "title": "复核铭硕电池本季度报价与毛利",
+      "detail": "铭硕储能 PACK 报价单尚缺 BOM 成本核验和交付周期确认，需户部、工部联合审价后再呈御览。",
+      "priority": "urgent",
+      "sourceLabel": "LIVE"
+    },
+    {
+      "title": "催办华南项目交付验收",
+      "detail": "华南区域 3 个在建项目已超交付窗口，兵部需在本周内提交延期责任说明。",
+      "priority": "high",
+      "sourceLabel": "LIVE"
+    },
+    {
+      "title": "刑部合同风险复核",
+      "detail": "近期 5 份新签合同中 2 份存在付款条件倒挂，需刑部法务逐条复核。",
+      "priority": "medium",
+      "sourceLabel": "MIXED"
+    }
+  ]
+}

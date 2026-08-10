@@ -1,0 +1,20 @@
+{
+  "ministers": [
+    { "agentCode": "prime_minister", "name": "丞相", "status": "在线", "opinion": "综合各部意见，建议准奏。" },
+    { "agentCode": "hu_bu", "name": "户部", "status": "已审", "opinion": "BOM成本核验通过，毛利率28.5%。" },
+    { "agentCode": "gong_bu", "name": "工部", "status": "已审", "opinion": "交付周期确认，30天可交付。" },
+    { "agentCode": "xing_bu", "name": "刑部", "status": "已审", "opinion": "合同条款无风险。" }
+  ],
+  "risks": [
+    { "label": "碳酸锂价格波动", "detail": "近期价格下跌15%，需关注对成本的影响。" }
+  ],
+  "groups": [
+    { "id": "grp-001", "name": "报价审核组", "status": "completed", "members": ["户部", "工部", "刑部"] }
+  ],
+  "councilSummary": "经丞相会审，户部确认BOM成本核验通过（毛利率28.5%），工部确认交付周期30天，刑部确认合同条款无风险。建议准奏。",
+  "memorial": {
+    "memorialId": "mem-001",
+    "title": "铭硕电池Q3报价准入回奏",
+    "status": "archived"
+  }
+}

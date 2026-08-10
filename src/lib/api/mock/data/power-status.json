@@ -1,0 +1,8 @@
+{
+  "power": {
+    "status": "normal",
+    "consumption": "1,250 kWh",
+    "generation": "1,480 kWh",
+    "storage": "85%"
+  }
+}

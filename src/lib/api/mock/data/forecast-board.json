@@ -1,0 +1,20 @@
+{
+  "scenarios": [
+    {
+      "id": "scenario-001",
+      "title": "碳酸锂价格继续下跌",
+      "description": "碳酸锂价格从5.2万跌至4万，BOM成本降低12%。",
+      "probability": 0.45,
+      "impact": "positive",
+      "affectedDepartments": ["hu_bu", "gong_bu"]
+    },
+    {
+      "id": "scenario-002",
+      "title": "欧盟新电池法规提前生效",
+      "description": "欧盟将新电池法规生效日期从2027年提前至2026年底。",
+      "probability": 0.2,
+      "impact": "negative",
+      "affectedDepartments": ["hu_bu", "gong_bu", "xing_bu"]
+    }
+  ]
+}

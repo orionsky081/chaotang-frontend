@@ -1,5 +1,6 @@
 import { getToken, clearSession, refreshAccessToken } from '../auth';
 import { APP_BASE_PATH } from '../base-path';
+import { interceptMock } from './mock/interceptor';
 
 export { API_PATHS, apiGateway, ApiError, buildApiPath, getJson, postJson } from './gateway';
 
@@ -44,6 +45,10 @@ async function apiFetchResponse(path: string, init?: RequestInit): Promise<Respo
 }
 
 async function apiFetch<T>(path: string, init?: RequestInit): Promise<T> {
+  // Mock 拦截
+  const mockData = interceptMock<T>(path, init?.method ?? 'GET');
+  if (mockData !== undefined) return mockData;
+
   const response = await apiFetchResponse(path, init);
   if (!response.ok) throw new Error(`${response.status} ${response.statusText} — ${path}`);
 

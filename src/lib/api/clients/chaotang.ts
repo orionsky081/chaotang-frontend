@@ -4,6 +4,7 @@ import type { DecreeDraft, DispatchBody, DispatchResult } from '@/lib/contracts/
 import type { MemorialBrief, MemorialDetail, ReviewAction, ReviewActionType } from '@/lib/contracts/memorial';
 import type { StudyRunRequest, StudyRunResponse } from '@/lib/contracts/study-edict';
 import { API_PATHS } from '../gateway';
+import { interceptMock } from '../mock/interceptor';
 import { buildAbsoluteApiUrl, buildApiRequestInit, normalizeApiResponseText, parseJson } from '../http';
 
 interface ApiEnvelope<T> {
@@ -46,6 +47,10 @@ function resolveServerMessage(payload: unknown): string | undefined {
 }
 
 async function request<T>(path: string, init: Parameters<typeof buildApiRequestInit>[0] = {}): Promise<T> {
+  // Mock 拦截
+  const mockData = interceptMock<T>(withBase(path), init.method ?? 'GET');
+  if (mockData !== undefined) return mockData;
+
   const requestInit = buildApiRequestInit({ cache: 'no-store', ...init });
   const url = buildAbsoluteApiUrl(withBase(path));
   const response = typeof window === 'undefined'

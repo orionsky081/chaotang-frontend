@@ -1,0 +1,33 @@
+[
+  {
+    "id": "ledger-001",
+    "taskId": "task-20260809-001",
+    "title": "铭硕电池Q3报价准入",
+    "status": "completed",
+    "assessment": {
+      "grade": "A",
+      "nextSuggestion": "归档后可作为后续报价参考案例"
+    },
+    "evidence": ["bom-cost-v3.xlsx", "delivery-schedule.pdf", "contract-terms.docx"],
+    "auditTrail": [
+      { "action": "立案", "time": "2026-08-09T10:00:00+08:00", "actor": "上书房" },
+      { "action": "准奏", "time": "2026-08-09T11:30:00+08:00", "actor": "皇帝" }
+    ],
+    "nextOwner": "户部"
+  },
+  {
+    "id": "ledger-002",
+    "taskId": "task-20260808-002",
+    "title": "华南项目交付验收",
+    "status": "in_progress",
+    "assessment": {
+      "grade": "B",
+      "nextSuggestion": "需兵部补充延期责任说明后再归档"
+    },
+    "evidence": ["delay-report.pdf"],
+    "auditTrail": [
+      { "action": "立案", "time": "2026-08-08T09:00:00+08:00", "actor": "上书房" }
+    ],
+    "nextOwner": "兵部"
+  }
+]

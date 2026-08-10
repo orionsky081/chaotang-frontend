@@ -1,0 +1,31 @@
+{
+  "hubu": [
+    { "label": "可用资金", "value": "12.8亿", "delta": "+0.6%", "deltaPositive": true },
+    { "label": "预算项目", "value": "96个", "delta": "+2", "deltaPositive": true },
+    { "label": "待付款", "value": "3,450万", "delta": "-120万", "deltaPositive": true }
+  ],
+  "libu": [
+    { "label": "核心岗位", "value": "186个", "delta": "+12", "deltaPositive": true },
+    { "label": "在岗人才", "value": "2,480人", "delta": "+5", "deltaPositive": true },
+    { "label": "待招聘", "value": "23个", "delta": "-3", "deltaPositive": true }
+  ],
+  "bingbu": [
+    { "label": "在办任务", "value": "128个", "delta": "+3", "deltaPositive": true },
+    { "label": "重点战役", "value": "23场", "delta": "+1", "deltaPositive": true },
+    { "label": "逾期任务", "value": "5个", "delta": "-2", "deltaPositive": true }
+  ],
+  "libu2": [
+    { "label": "客户总数", "value": "待接入", "delta": "", "deltaPositive": false },
+    { "label": "签约客户", "value": "待接入", "delta": "", "deltaPositive": false }
+  ],
+  "xingbu": [
+    { "label": "审理案件", "value": "42起", "delta": "+1", "deltaPositive": true },
+    { "label": "预警风险", "value": "3条", "delta": "0", "deltaPositive": true },
+    { "label": "合同审核", "value": "15份", "delta": "+2", "deltaPositive": true }
+  ],
+  "gongbu": [
+    { "label": "研发项目", "value": "36个", "delta": "+2", "deltaPositive": true },
+    { "label": "供给覆盖", "value": "8,952项", "delta": "+186", "deltaPositive": true },
+    { "label": "在建工程", "value": "7个", "delta": "0", "deltaPositive": true }
+  ]
+}

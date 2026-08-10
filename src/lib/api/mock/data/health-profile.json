@@ -1,0 +1,15 @@
+{
+  "status": "healthy",
+  "timestamp": "2026-08-10T18:00:00+08:00",
+  "components": {
+    "database": { "status": "up", "type": "turso", "latency": "2ms" },
+    "modelGateway": { "status": "up", "provider": "openai-compatible", "latency": "150ms" },
+    "queue": { "status": "up", "pending": 3, "processing": 1 },
+    "courtProtocol": { "status": "up", "version": "1.0.0" }
+  },
+  "readiness": {
+    "internal": true,
+    "formal": false,
+    "blockers": []
+  }
+}

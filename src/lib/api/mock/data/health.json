@@ -1,0 +1,10 @@
+{
+  "health": "healthy",
+  "components": {
+    "database": { "status": "up", "latency": "2ms" },
+    "modelGateway": { "status": "up", "latency": "150ms" },
+    "queue": { "status": "up", "pending": 3 }
+  },
+  "version": "0.1.0",
+  "uptime": "72h"
+}

@@ -1,0 +1,12 @@
+{
+  "overview": {
+    "totalSkills": 15,
+    "activeExperiments": 3,
+    "contributions": 28
+  },
+  "skills": [
+    { "id": "skill-001", "name": "报价审核", "status": "active", "usageCount": 45 },
+    { "id": "skill-002", "name": "合同分析", "status": "active", "usageCount": 32 },
+    { "id": "skill-003", "name": "风险预警", "status": "active", "usageCount": 28 }
+  ]
+}
