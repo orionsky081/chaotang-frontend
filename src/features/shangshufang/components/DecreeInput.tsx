@@ -67,7 +67,7 @@ export function DecreeInput({
   const [localValue, setLocalValue] = useState(value);
   const isSecret = mode === 'secret';
   const isMentorAsk = mode === 'ask' && askTarget === 'mentor';
-  const accent = isSecret ? SECRET : ***
+  const accent = isSecret ? SECRET : GOLD
   const busy = state === 'consulting';
 
   useEffect(() => {
@@ -195,7 +195,7 @@ export function DecreeInput({
           {displayOptions.map((item) => {
             const selected = mode === item.mode && (item.mode !== 'ask' || item.askTarget === askTarget);
             const Icon = item.icon === 'ask' ? MessageSquare : item.icon === 'mentor' ? Telescope : item.icon === 'order' ? Scroll : Lock;
-            const tone = item.mode === 'secret' ? SECRET : ***
+            const tone = item.mode === 'secret' ? SECRET : GOLD
             return (
               <button
                 key={item.key}
