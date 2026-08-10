@@ -37,7 +37,7 @@ export const MINISTRIES: Ministry[] = [
   },
   {
     key: "hubu",
-    title: "户部 · 财税资荟",
+    title: "户部 · 财税资管",
     color: "#ebcb7b",
     mark: <MarkHubu />,
     desc: "总揽庄园财税与资金调度，统筹预算、库银与收支盈亏。",

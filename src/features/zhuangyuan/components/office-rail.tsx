@@ -26,7 +26,7 @@ export interface OfficeRailProps {
 /** 户部左栏（账册与风险） */
 export const HUBU_LEFT_RAIL: OfficeRailItemData[] = [
   {
-    tag: '账期',
+    tag: '周期',
     title: '现金流任务',
     desc: '看本周付款、回款和预算占用，先排高压事项。',
   },
@@ -45,14 +45,14 @@ export const HUBU_LEFT_RAIL: OfficeRailItemData[] = [
 /** 户部右栏（预算与验收） */
 export const HUBU_RIGHT_RAIL: OfficeRailItemData[] = [
   {
-    tag: '测验',
-    title: '户部裁断',
+    tag: '准/驳',
+    title: '户部截断',
     desc: '值不值得花钱，先看账本再下旨。',
   },
   {
-    tag: '回写',
+    tag: '督导',
     title: '资金验收',
-    desc: '每笔动作要有预算来源、责任人和回写口。',
+    desc: '每笔动作要有预算来源、责任人和回款口。',
   },
   {
     tag: '归档',
