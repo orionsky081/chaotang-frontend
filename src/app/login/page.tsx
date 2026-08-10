@@ -76,7 +76,8 @@ function LoginForm() {
           </div>
           <Link
             href="/register"
-            className="inline-flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2 text-[12px] font-medium text-[#EAEEFB] transition hover:border-white/15 hover:bg-white/[0.06]"
+            className="inline-flex items-center gap-1.5 border border-[#999999] bg-transparent px-3 py-2 text-[12px] font-medium text-[#999999] transition hover:border-white hover:text-white"
+            style={{ borderRadius: '4px' }}
           >
             立即注册
             <ArrowRight size={13} />
@@ -121,7 +122,7 @@ function LoginForm() {
         </label>
 
         {error && (
-          <p className="mb-4 text-sm rounded-md px-3 py-2" style={{ background: 'rgba(244,63,94,0.1)', border: '1px solid rgba(244,63,94,0.3)', color: '#F87171' }}>
+          <p className="mb-4 text-sm px-3 py-2" style={{ background: 'rgba(244,63,94,0.1)', border: '1px solid rgba(244,63,94,0.3)', color: '#F87171', borderRadius: '4px' }}>
             {error}
           </p>
         )}
@@ -129,11 +130,12 @@ function LoginForm() {
         <button
           type="submit"
           disabled={submitting}
-          className="w-full rounded-full px-4 py-3 text-sm font-semibold tracking-[0.2em] disabled:opacity-50 transition-colors"
+          className="w-full px-4 text-[15px] font-semibold tracking-[0.08em] disabled:opacity-50 transition-all hover:brightness-110"
           style={{
-            background: 'linear-gradient(135deg, #F0C66A, #D4A84B 50%, #8A6A2A)',
-            color: '#04060E',
-            boxShadow: '0 0 26px rgba(240,198,106,0.28)',
+            background: 'linear-gradient(180deg, #D4A017, #FFD700)',
+            color: '#333333',
+            borderRadius: '4px',
+            height: '44px',
           }}
         >
           {submitting ? '验证中…' : '入朝议政'}
@@ -141,32 +143,29 @@ function LoginForm() {
       </form>
       <style jsx global>{`
         .login-auth-input {
-          height: 42px;
-          border: 1px solid rgba(240, 198, 106, 0.16);
-          border-radius: 0;
+          height: 40px;
+          border: 1px solid #333333;
+          border-radius: 4px;
           outline: none !important;
           color: #eaeefb;
           caret-color: #f0c66a;
-          background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(0,0,0,0.16));
-          box-shadow: inset 0 1px 0 rgba(245,233,201,0.035);
+          background: rgba(255,255,255,0.05);
+          box-shadow: none;
           transition:
             border-color 180ms ease,
             box-shadow 180ms ease,
             background 180ms ease;
         }
         .login-auth-input:hover {
-          border-color: rgba(240, 198, 106, 0.24);
-          background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(0,0,0,0.18));
+          border-color: #555555;
+          background: rgba(255,255,255,0.06);
         }
         .login-auth-input:focus,
         .login-auth-input:focus-visible {
-          border-color: rgba(240, 198, 106, 0.52) !important;
+          border-color: #c9a96e !important;
           outline: none !important;
-          box-shadow:
-            inset 0 1px 0 rgba(245,233,201,0.08),
-            0 0 0 1px rgba(240,198,106,0.14),
-            0 0 14px rgba(240,198,106,0.14) !important;
-          background: linear-gradient(180deg, rgba(255,255,255,0.055), rgba(0,0,0,0.22));
+          box-shadow: none !important;
+          background: rgba(255,255,255,0.05);
         }
       `}</style>
     </AuthShell>

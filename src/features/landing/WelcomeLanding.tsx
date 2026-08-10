@@ -83,24 +83,24 @@ export function WelcomeLanding() {
               <div className="text-[9px] tracking-[0.12em] text-[#6A7299]">COURTOS</div>
             </div>
           </div>
-          <nav className="hidden items-center gap-6 md:flex">
-            <a href="#pain-points" className="text-[12px] text-[#9AA3C4] transition hover:text-[#F5E9C9]">企业痛点</a>
-            <a href="#features" className="text-[12px] text-[#9AA3C4] transition hover:text-[#F5E9C9]">解决方案</a>
-            <a href="#scenarios" className="text-[12px] text-[#9AA3C4] transition hover:text-[#F5E9C9]">适用场景</a>
-            <a href="#demo" className="text-[12px] text-[#9AA3C4] transition hover:text-[#F5E9C9]">预约体验</a>
+          <nav className="hidden items-center gap-10 md:flex">
+            <a href="#pain-points" className="text-[14px] text-white transition hover:text-[#F5E9C9]">企业痛点</a>
+            <a href="#features" className="text-[14px] text-white transition hover:text-[#F5E9C9]">解决方案</a>
+            <a href="#scenarios" className="text-[14px] text-white transition hover:text-[#F5E9C9]">适用场景</a>
+            <a href="#demo" className="text-[14px] text-white transition hover:text-[#F5E9C9]">预约体验</a>
           </nav>
           <div className="flex items-center gap-3">
             <button
               type="button"
               onClick={() => router.push('/login')}
-              className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-[12px] text-[#C6BB9D] transition hover:border-white/15 hover:text-[#F5E9C9]"
+              className="inline-flex items-center gap-1.5 rounded-full border border-[rgba(255,255,255,0.2)] bg-transparent px-5 py-2.5 text-[14px] text-white transition hover:border-white hover:text-white"
             >
               已有账号
             </button>
             <button
               type="button"
               onClick={() => router.push('/register')}
-              className="inline-flex items-center gap-1.5 rounded-full border border-[#F0C66A]/30 bg-[#F0C66A]/15 px-4 py-2 text-[12px] font-semibold text-[#F0C66A] transition hover:bg-[#F0C66A]/25"
+              className="inline-flex items-center gap-1.5 rounded-full bg-[linear-gradient(180deg,#C8A45E,#E2B95A)] px-5 py-2.5 text-[14px] font-medium text-[#1A1A1A] transition hover:brightness-110"
             >
               创建朝堂
               <ArrowRight size={13} />
@@ -115,14 +115,14 @@ export function WelcomeLanding() {
             <span className="text-[11px] tracking-[0.18em] text-[#F0C66A]">AI 决策操作系统</span>
           </div>
           <h1
-            className="display-serif text-[52px] font-bold leading-[1.1] text-[#F6EFD8] md:text-[72px]"
+            className="display-serif text-[80px] font-bold leading-[1.1] text-[#F5E6C8] md:text-[96px]"
           >
             朝堂 OS
           </h1>
-          <p className="mt-4 max-w-[680px] text-[18px] leading-8 text-[#D8C99A] md:text-[22px]" style={{ fontFamily: 'var(--font-serif)' }}>
+          <p className="mt-4 max-w-[680px] text-[32px] leading-8 text-[#E8D5A8] md:text-[36px]" style={{ fontFamily: 'var(--font-serif)' }}>
             把你的公司，交给一座会思考的朝堂
           </p>
-          <p className="mt-5 max-w-[640px] text-[13px] leading-7 text-[#9AA3C4] md:text-[14px]">
+          <p className="mt-5 max-w-[640px] text-[16px] leading-7 text-white/70 md:text-[18px]">
             专为老板决策太慢、部门信息割裂、AI 结果不可追责的企业设计。上书房接问题，六部查证，军机处会审，
             <br className="hidden md:block" />东宫代办，史馆归档。你只裁断关键事项。
           </p>
@@ -132,7 +132,7 @@ export function WelcomeLanding() {
             {PAIN_POINTS.map((point) => (
               <div
                 key={point}
-                className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-[12px] text-[#C6BB9D] backdrop-blur-sm"
+                className="rounded-full border border-[rgba(200,164,94,0.3)] bg-[rgba(0,0,0,0.35)] px-[18px] py-2 text-[14px] text-[#E8D5A8] backdrop-blur-sm transition hover:border-[rgba(200,164,94,0.6)] hover:bg-[rgba(0,0,0,0.5)]"
               >
                 {point}
               </div>
@@ -144,10 +144,11 @@ export function WelcomeLanding() {
             <button
               type="button"
               onClick={() => router.push('/register')}
-              className="group inline-flex items-center gap-2.5 rounded-full px-8 py-3.5 text-[14px] font-semibold tracking-[0.06em] transition-all hover:-translate-y-0.5 hover:shadow-[0_12px_40px_rgba(240,198,106,0.25)]"
+              className="group inline-flex items-center gap-2.5 rounded-full px-8 py-3.5 text-[14px] font-medium tracking-[0.06em] transition-all hover:-translate-y-0.5"
               style={{
-                background: 'linear-gradient(135deg, #F0C66A, #D4A84B 50%, #8A6A2A)',
-                color: '#04060E',
+                background: 'linear-gradient(180deg, #C8A45E, #E2B95A)',
+                color: '#1A1A1A',
+                boxShadow: '0 4px 20px rgba(200,164,94,0.3)',
               }}
             >
               创建朝堂
@@ -156,7 +157,7 @@ export function WelcomeLanding() {
             <button
               type="button"
               onClick={() => router.push('/about')}
-              className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.04] px-6 py-3 text-[13px] text-[#C6BB9D] transition hover:border-white/20 hover:text-[#F5E9C9]"
+              className="inline-flex items-center gap-2 rounded-full border border-[rgba(200,164,94,0.6)] bg-transparent px-6 py-3 text-[13px] text-[#C8A45E] transition hover:border-[rgba(200,164,94,0.9)] hover:text-[#E8C87A]"
             >
               先看解决什么痛点
               <ArrowRight size={14} />
@@ -169,7 +170,7 @@ export function WelcomeLanding() {
           <div className="mx-auto max-w-[900px]">
             {/* 试问朝堂 */}
             <div className="mb-3 text-[12px] text-[#6A7299]">试问朝堂</div>
-            <div className="flex items-center gap-3 rounded-xl border border-white/10 bg-[#0A0F1E]/80 p-3 backdrop-blur-md">
+            <div className="flex items-center gap-3 border border-[rgba(255,255,255,0.1)] bg-[#0D1117] p-4 backdrop-blur-md" style={{ borderRadius: '12px', height: '56px' }}>
               <input
                 type="text"
                 defaultValue="这个客户该不该降价签？"
@@ -179,7 +180,8 @@ export function WelcomeLanding() {
               <button
                 type="button"
                 onClick={() => router.push('/shangshufang')}
-                className="inline-flex shrink-0 items-center gap-2 rounded-lg border border-[#F0C66A]/30 bg-[#F0C66A]/10 px-4 py-2 text-[12px] font-medium text-[#F0C66A] transition hover:bg-[#F0C66A]/20"
+                className="inline-flex shrink-0 items-center gap-2 border border-[rgba(200,164,94,0.5)] bg-[#1A1E2E] px-5 py-2.5 text-[12px] font-medium text-[#C8A45E] transition hover:border-[rgba(200,164,94,0.8)]"
+                style={{ borderRadius: '10px' }}
               >
                 <Scroll size={14} />
                 生成奏折
@@ -215,7 +217,7 @@ export function WelcomeLanding() {
         </section>
 
         {/* 底部导航 */}
-        <div className="mx-auto mt-8 flex max-w-[1100px] flex-wrap items-center justify-between gap-4 border-t border-white/[0.06] px-6 pt-6 md:px-10">
+        <div className="mx-auto mt-8 flex max-w-[1100px] flex-wrap items-center justify-between gap-4 border-t border-[#F0C66A]/10 px-6 pt-6 md:px-10">
           <div className="text-[11px] tracking-[0.08em] text-[#58617F]">
             © 2026 朝堂OS · CourtOS · 东方治理智能体
           </div>

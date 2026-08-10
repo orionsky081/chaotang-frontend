@@ -204,7 +204,6 @@ function draftView(taskId: string, draft: DraftEdict): EdictView {
     id: `${taskId}-draft`,
     title: '圣旨草案',
     subtitle: draft.emperor_confirmation_question,
-    documentKind: '拟旨',
     question: draft.original_question,
     seal: 'imperial',
     meta: {
@@ -279,7 +278,7 @@ function memorialView(
     id: `${task.task_id}-${task.updated_at}`,
     title: memorial.title,
     subtitle: `案号 ${task.task_id}`,
-    documentKind: '正式回奏',
+    documentKind: '回奏',
     question: task.raw_question,
     seal: 'imperial',
     alert: blocked
@@ -325,7 +324,7 @@ function archivedMemorialView(
   return {
     ...base,
     id: `${base.id}-${archive.snapshot_hash}`,
-    documentKind: '正式奏折 · 史馆签封',
+    documentKind: '奏折',
     rows: [
       ...base.rows,
       {
@@ -373,7 +372,7 @@ function idleView(): EdictView {
     id: 'pilot-empty',
     title: '御前试行 · 待拟旨',
     subtitle: '输入真实需求，可选填服务端已登记的证据包编号',
-    documentKind: '上书房',
+    documentKind: '圣旨',
     seal: 'imperial',
     rows: [
       { label: '流程', body: '拟旨 → 下旨 → 军机处会审 → 一页回奏 → 准奏、驳回或补证。' },
@@ -1257,8 +1256,9 @@ export function ShangshufangPage() {
                   {/* 中心「旨」字 */}
                   <span className="text-[24px] font-bold text-[#F0C66A]" style={{ fontFamily: 'var(--font-serif)', textShadow: '0 0 14px rgba(240,198,106,0.5)' }}>旨</span>
                 </div>
+                <span className="rounded-full border border-[#F0C66A]/30 bg-[#F0C66A]/10 px-3 py-1 text-[10px] font-semibold tracking-[0.12em] text-[#F0C66A]">蜂群调度</span>
                 <p className="text-center text-[20px] font-bold tracking-[0.1em] text-[#F5E9C9]" style={{ fontFamily: 'var(--font-serif)', textShadow: '0 0 18px rgba(240,198,106,0.22)' }}>
-                  后端蜂群已接旨，正在调度...
+                  后端蜂群已接旨，正在调度…
                 </p>
                 <div className="flex flex-wrap items-center justify-center gap-2 font-mono text-[10px] tracking-[0.06em]">
                   <span className="rounded-full border border-[#F0C66A]/25 bg-[#0C1022]/80 px-2.5 py-1 text-[#F0C66A]">案号：task_{taskId ?? 'pending'}</span>
@@ -1392,7 +1392,25 @@ export function ShangshufangPage() {
                         placeholder="裁决理由（建议填写）"
                         className="min-w-[220px] flex-1 rounded-full border border-[#8A6A2A]/35 bg-[#FFF8E0]/45 px-3 py-1.5 text-[11px] text-[#2E2410] outline-none placeholder:text-[#6B5730]"
                       />
-                      {/* 四键圣裁：会审→补证复核 / 批示→追问 / 驳回 / 准奏（仅改视觉，不动 API 与后端语义） */}
+                      {/* 四键圣裁：准奏 / 驳回 / 会审 / 批示（对齐效果图顺序） */}
+                      <ImperialButton
+                        variant="gold"
+                        size="sm"
+                        serif
+                        disabled={phase === 'decided' || !decisionEnabled('approve')}
+                        onClick={() => submitDecision('approve')}
+                      >
+                        准奏
+                      </ImperialButton>
+                      <ImperialButton
+                        variant="gold"
+                        size="sm"
+                        serif
+                        disabled={phase === 'decided' || !decisionEnabled('reject')}
+                        onClick={() => submitDecision('reject')}
+                      >
+                        驳回
+                      </ImperialButton>
                       <ImperialButton
                         variant="gold"
                         size="sm"
@@ -1410,24 +1428,6 @@ export function ShangshufangPage() {
                         onClick={() => flashNotice('御批：请在裁决理由中补充指示，或交由丞相继续追问后再呈回奏。')}
                       >
                         批示
-                      </ImperialButton>
-                      <ImperialButton
-                        variant="gold"
-                        size="sm"
-                        serif
-                        disabled={phase === 'decided' || !decisionEnabled('reject')}
-                        onClick={() => submitDecision('reject')}
-                      >
-                        驳回
-                      </ImperialButton>
-                      <ImperialButton
-                        variant="gold"
-                        size="sm"
-                        serif
-                        disabled={phase === 'decided' || !decisionEnabled('approve')}
-                        onClick={() => submitDecision('approve')}
-                      >
-                        准奏
                       </ImperialButton>
                     </>
                   )}

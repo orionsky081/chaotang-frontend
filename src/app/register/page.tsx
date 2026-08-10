@@ -119,7 +119,8 @@ function RegisterForm() {
             </div>
             <Link
               href={inviteCode ? `/login?next=/overview&invite=${encodeURIComponent(inviteCode)}` : '/login'}
-              className="inline-flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2 text-[12px] font-medium text-[#EAEEFB] transition hover:border-white/15 hover:bg-white/[0.06]"
+              className="inline-flex items-center gap-1.5 border border-[#999999] bg-transparent px-3 py-2 text-[12px] font-medium text-[#999999] transition hover:border-white hover:text-white"
+              style={{ borderRadius: '4px' }}
             >
               立即登录
               <ArrowRight size={13} />
@@ -153,12 +154,13 @@ function RegisterForm() {
       body="创建你的朝堂席位，注册后即可登录使用全部功能。"
       footer={
         <div className="flex items-center justify-between gap-4">
-          <div className="text-[12px] leading-6 text-[#9AA3C4]">
+          <div className="text-[12px] leading-6 text-[#999999]">
             已有账号？直接登录进入系统。
           </div>
           <Link
             href={inviteCode ? `/login?invite=${encodeURIComponent(inviteCode)}` : '/login'}
-            className="inline-flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2 text-[12px] font-medium text-[#EAEEFB] transition hover:border-white/15 hover:bg-white/[0.06]"
+            className="inline-flex items-center gap-1.5 border border-[#999999] bg-transparent px-3 py-2 text-[12px] font-medium text-[#999999] transition hover:border-white hover:text-white"
+            style={{ borderRadius: '4px' }}
           >
             去登录
             <ArrowRight size={13} />
@@ -221,11 +223,12 @@ function RegisterForm() {
         <button
           type="submit"
           disabled={submitting}
-          className="inline-flex w-full items-center justify-center gap-2 rounded-full px-4 py-3 text-[13px] font-semibold transition disabled:cursor-not-allowed disabled:opacity-60"
+          className="inline-flex w-full items-center justify-center gap-2 text-[15px] font-medium transition disabled:cursor-not-allowed disabled:opacity-60 hover:brightness-110"
           style={{
-            background: 'linear-gradient(135deg, #F0C66A, #D4A84B)',
-            color: '#04060E',
-            boxShadow: '0 0 26px rgba(240,198,106,0.28)',
+            background: 'linear-gradient(180deg, #D4A017, #FFD700)',
+            color: '#333333',
+            borderRadius: '4px',
+            height: '44px',
           }}
         >
           {submitting ? '正在注册…' : inviteCode ? '使用引荐码注册' : '注册账号'}
@@ -260,7 +263,8 @@ function Field({
         onChange={(event) => onChange(event.target.value)}
         placeholder={placeholder}
         autoComplete={autoComplete}
-        className="w-full rounded-xl border border-white/10 bg-[#070B17] px-4 py-3 text-[13px] text-[#EAEEFB] outline-none transition placeholder:text-[#58617F] focus:border-[#F0C66A]/45 focus:bg-[#0A1020]"
+        className="w-full border border-[#333333] bg-transparent px-4 text-[14px] text-[#EAEEFB] outline-none transition placeholder:text-[#999999] focus:border-[#c9a96e]"
+        style={{ height: '40px', borderRadius: '4px' }}
       />
     </label>
   );

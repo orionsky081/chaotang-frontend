@@ -25,8 +25,8 @@ export function AuthShell({
     <div className="relative min-h-screen overflow-hidden bg-[#04060E]">
       <AuthBackdrop bgImage={bgImage} />
       <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-[1320px] flex-col justify-center px-6 py-10 md:px-10">
-        <div className="grid gap-6 lg:grid-cols-[1.08fr_520px]">
-          <GlassPanel variant="gold" tone="deep" padding="lg" className="overflow-hidden">
+        <div className="grid gap-6 lg:grid-cols-[1.5fr_1fr]">
+          <GlassPanel variant="gold" tone="deep" padding="lg" className="overflow-hidden" style={{ borderRadius: '16px', border: '1px solid rgba(255,255,255,0.08)' }}>
             <div className="flex h-full flex-col justify-between gap-8">
               <div>
                 <div className="flex items-center gap-3">
@@ -47,34 +47,36 @@ export function AuthShell({
 
                 <div className="mt-8 max-w-[620px]">
                   <div className="page-eyebrow">{eyebrow}</div>
-                  <h1 className="display-serif mt-3 text-[34px] font-bold leading-[1.14] text-[#F6EFD8] md:text-[44px]">
+                  <h1 className="display-serif mt-3 text-[36px] font-bold leading-[1.14] text-white md:text-[36px]">
                     {title}
                   </h1>
-                  <p className="mt-4 max-w-[560px] text-[14px] leading-8 text-[#B8C0DA]">
+                  <p className="mt-4 max-w-[560px] text-[14px] leading-[1.8] text-[#999999]">
                     {body}
                   </p>
                 </div>
 
-                <div className="mt-8 rounded-lg border border-white/8 bg-white/[0.03] p-4">
-                  <div className="text-[11px] uppercase tracking-[0.22em] text-[#8F835F]">
+                <div className="mt-8 rounded-xl border border-white/[0.06] bg-white/[0.03] p-5">
+                  <div className="text-[10px] uppercase tracking-[0.22em] text-[#c9a96e]">
                     Trial Path
                   </div>
-                  <div className="mt-3 text-[14px] leading-8 text-[#D8DEEF]">
-                    注册或登录后，先建立实例，再进入 <span className="font-mono text-[#F0C66A]">/throne</span> 开始主链体验。
+                  <div className="mt-3 text-[14px] leading-8 text-white/60">
+                    注册或登录后，先建立实例，再进入 <span className="font-mono text-[#c9a96e]">/throne</span> 开始主链体验。
                   </div>
                 </div>
               </div>
 
-              <div className="flex flex-wrap items-center gap-3 text-[11px] text-[#9AA3C4]">
+              <div className="flex flex-wrap items-center gap-3 text-[13px] text-[#999999]">
                 <Link
                   href="/intro"
-                  className="rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 transition hover:border-white/15 hover:bg-white/[0.05] hover:text-[#F5E9C9]"
+                  className="border border-[#999999] bg-transparent px-4 py-2 transition hover:border-white hover:text-white"
+                  style={{ borderRadius: '4px', height: '36px', display: 'inline-flex', alignItems: 'center' }}
                 >
                   返回开场
                 </Link>
                 <Link
                   href="/about"
-                  className="rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 transition hover:border-white/15 hover:bg-white/[0.05] hover:text-[#F5E9C9]"
+                  className="border border-[#999999] bg-transparent px-4 py-2 transition hover:border-white hover:text-white"
+                  style={{ borderRadius: '4px', height: '36px', display: 'inline-flex', alignItems: 'center' }}
                 >
                   了解产品
                 </Link>
@@ -86,7 +88,7 @@ export function AuthShell({
             tone="elevated"
             padding="lg"
             className="self-center"
-            style={{ borderColor: 'rgba(212,175,55,0.25)', borderRadius: '16px' }}
+            style={{ borderColor: 'rgba(255,255,255,0.08)', borderRadius: '16px', background: 'rgba(15,20,32,0.8)', backdropFilter: 'blur(16px)' }}
           >
             {children}
             {footer ? <div className="mt-6 border-t border-white/8 pt-5">{footer}</div> : null}
