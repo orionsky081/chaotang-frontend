@@ -22,11 +22,11 @@ const DEPT_STATUS_TAGS: {
   top: number;
 }[] = [
   { name: "工部", status: "运行中", color: "#3DD68C", side: "left", offset: 10, top: 34 },
-  { name: "户部", status: "报筹中", color: "#F5A524", side: "right", offset: 10, top: 32 },
+  { name: "户部", status: "报审中", color: "#F5A524", side: "right", offset: 10, top: 32 },
   { name: "吏部", status: "运行中", color: "#3DD68C", side: "left", offset: 8, top: 50 },
   { name: "礼部", status: "运行中", color: "#3DD68C", side: "right", offset: 8, top: 48 },
   { name: "兵部", status: "运行中", color: "#3DD68C", side: "left", offset: 12, top: 66 },
-  { name: "丞相", status: "会辅中", color: "#F0C66A", side: "left", offset: 34, top: 26 },
+  { name: "丞相", status: "会翰中", color: "#F0C66A", side: "left", offset: 34, top: 26 },
   { name: "锦衣卫", status: "待命", color: "#57B7FF", side: "right", offset: 12, top: 66 },
   { name: "钦天监", status: "已上奏", color: "#9B6CF6", side: "right", offset: 32, top: 28 },
   { name: "史馆", status: "已上奏", color: "#9B6CF6", side: "left", offset: 16, top: 74 },

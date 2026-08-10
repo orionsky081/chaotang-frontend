@@ -84,14 +84,14 @@ export default function BottomBar() {
       {/* 双顾问入口:左问丞相 · 先压判断与验证 / 右问钦天监 · 先看时机与风险(深底金边圆角) */}
       <div className="grid grid-cols-2 gap-2 px-3 pb-2.5 md:px-4">
         <AdvisorEntry
-          title="问丞相"
-          hint="先压判断与验证"
+          title="周丞相"
+          hint="先出判断与论据"
           href="/court-briefing"
           accent="#F0C66A"
           dot="#F0C66A"
         />
         <AdvisorEntry
-          title="问钦天监"
+          title="回钦天监"
           hint="先看时机与风险"
           href="/forecast"
           accent="#9B6CF6"

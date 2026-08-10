@@ -69,7 +69,7 @@ export function ChaotangTopNav({
         <span className="grid h-7 w-7 place-items-center rounded-full border border-[#F0C66A]/45 bg-[#F0C66A]/10 font-serif text-[12px] font-bold text-[#F0C66A]">朝</span>
         <span className="hidden flex-col leading-tight sm:flex">
           <span className="font-serif text-[13px] font-bold tracking-[0.12em] text-[#F5E9C9]">朝堂OS</span>
-          <span className="text-[8px] font-medium tracking-[0.28em] text-[#8A9BB8]">上值朝 · AI 智能办公</span>
+          <span className="text-[8px] font-medium tracking-[0.28em] text-[#8A9BB8]">上值朝·AI 智能办公</span>
         </span>
       </Link>
 

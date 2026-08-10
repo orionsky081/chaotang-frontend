@@ -226,13 +226,13 @@ function CommandCenterInner() {
                 <div className="flex items-start justify-between gap-4">
                   <div>
                     <div className="text-[10px] uppercase tracking-[0.22em]" style={{ color: SCROLL_PAPER.inkMuted }}>
-                      卷首 · {hasTask ? '军机处案卷' : '待接案'}
+                      JUNJICHU COMMAND · {hasTask ? '军机处案卷' : '待接案'}
                     </div>
                     <h2 className="mt-1 text-[26px] font-semibold leading-tight" style={{ fontFamily: 'var(--font-serif)', color: SCROLL_PAPER.ink }}>
                       奏折
                     </h2>
                     <div className="mt-1 text-[11px]" style={{ color: SCROLL_PAPER.inkSoft }}>
-                      来源 · {hasTask ? taskSummary?.sourceLabel ?? 'UNKNOWN' : '待接案(未真实立案)'}
+                      军机处 · 上书房式会审主卷
                     </div>
                   </div>
                   <Seal />
@@ -243,7 +243,7 @@ function CommandCenterInner() {
                   </div>
                   <p className="mt-1 text-[12.5px] leading-6" style={{ color: SCROLL_PAPER.inkSoft }}>
                     {councilSummary ??
-                      '（占位）立案后，丞相会在此汇总各部表态与风险要点；本条为视觉占位，非真实建议。'}
+                      '尚未接入真案。请回上书房下旨，或携 taskId 进入军机处'}
                   </p>
                 </div>
               </header>
@@ -337,7 +337,7 @@ function CommandCenterInner() {
         <div className="flex flex-wrap items-center justify-between gap-2">
           <span className="text-[11px] text-[#8A7A52]">军机处 · JSON REST + 后端事件轮询</span>
           <div className="flex flex-wrap gap-2">
-            <FooterCapsule icon={<ScrollText size={13} />} onClick={() => router.push('/court-briefing')}>展开辅政</FooterCapsule>
+            <FooterCapsule icon={<ScrollText size={13} />} onClick={() => router.push('/court-briefing')}>展开辐政</FooterCapsule>
             <FooterCapsule icon={<ScrollText size={13} />} onClick={() => router.push('/court-briefing')}>发圣旨</FooterCapsule>
             <FooterCapsule icon={<FilePlus2 size={13} />} onClick={() => router.push('/command-center?view=cases')}>案卷立案</FooterCapsule>
             <FooterCapsule icon={<Users size={13} />} onClick={() => router.push('/command-center?view=council')}>召六部会审</FooterCapsule>
@@ -453,15 +453,14 @@ function KV({ k, v, mono = false }: { k: string; v: string; mono?: boolean }) {
   );
 }
 
-/** 红色「機密」章 */
+/** 红色「奏」章 */
 function Seal() {
   return (
     <div
-      className="flex h-12 w-12 shrink-0 flex-col items-center justify-center rounded-sm border-2 leading-none"
+      className="flex h-12 w-12 shrink-0 items-center justify-center rounded-sm border-2 leading-none"
       style={{ borderColor: '#b23a2e', color: '#b23a2e', background: 'rgba(150,40,32,0.10)', transform: 'rotate(-4deg)' }}
     >
-      <span className="text-[16px] font-bold" style={{ fontFamily: 'var(--font-serif)' }}>機</span>
-      <span className="text-[16px] font-bold" style={{ fontFamily: 'var(--font-serif)' }}>密</span>
+      <span className="text-[22px] font-bold" style={{ fontFamily: 'var(--font-serif)' }}>奏</span>
     </div>
   );
 }
