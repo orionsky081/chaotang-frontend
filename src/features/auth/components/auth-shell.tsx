@@ -4,6 +4,7 @@ import Link from 'next/link';
 import type { ReactNode } from 'react';
 import { GlassPanel } from '@/components/ui/glass-panel';
 import { withBasePath } from '@/lib/base-path';
+import { BrandLogo } from '@/components/BrandLogo';
 
 export function AuthShell({
   eyebrow,
@@ -37,11 +38,7 @@ export function AuthShell({
                       boxShadow: '0 0 24px rgba(240,198,106,0.18)',
                     }}
                   >
-                    <img
-                      src={withBasePath('/logo-dragon.svg')}
-                      alt="朝堂OS"
-                      className="h-7 w-7"
-                    />
+                    <BrandLogo className="h-7 w-7" />
                   </div>
                   <div>
                     <div className="page-eyebrow">CourtOS Access</div>

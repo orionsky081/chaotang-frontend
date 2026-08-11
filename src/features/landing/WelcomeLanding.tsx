@@ -10,6 +10,7 @@ import { useRouter } from 'next/navigation';
 import { ArrowRight, Scroll } from 'lucide-react';
 import { assetUrl } from '@/lib/asset';
 import { getSession } from '@/lib/auth';
+import { BrandLogo } from '@/components/BrandLogo';
 
 const PAIN_POINTS = [
   '老板被小事淹没',
@@ -77,7 +78,9 @@ export function WelcomeLanding() {
         {/* 顶栏 */}
         <header className="flex items-center justify-between px-6 py-5 md:px-10">
           <div className="flex items-center gap-3">
-            <span className="grid h-9 w-9 place-items-center rounded-full border border-[#F0C66A]/50 bg-[#F0C66A]/10 text-[16px]">🐉</span>
+            <div className="grid h-9 w-9 place-items-center rounded-full border border-[#F0C66A]/50 bg-[#0B0F1A]">
+              <BrandLogo className="h-6 w-6" />
+            </div>
             <div>
               <div className="text-[15px] font-bold tracking-[0.1em] text-[#F5E9C9]" style={{ fontFamily: 'var(--font-serif)' }}>朝堂 OS</div>
               <div className="text-[9px] tracking-[0.12em] text-[#6A7299]">COURTOS</div>
