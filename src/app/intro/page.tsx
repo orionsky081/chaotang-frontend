@@ -5,6 +5,7 @@ import { ArrowRight, FastForward, Play } from 'lucide-react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { assetUrl } from '@/lib/asset';
 import { AUTH_STORAGE_KEY } from '@/lib/auth';
+import { BrandLogo } from '@/components/BrandLogo';
 
 const INTRO_DURATION_MS = 22500;
 const CTA_REVEAL_MS = 3200;
@@ -156,7 +157,7 @@ function IntroPageBody() {
 
       <header className="vision-intro-topbar">
         <div className="vision-intro-brand" aria-label="CourtOS">
-          <span>朝</span>
+          <BrandLogo className="vision-intro-brand-mark" />
           <strong>CourtOS</strong>
         </div>
         <button type="button" className="vision-intro-skip" onClick={finishIntro}>
