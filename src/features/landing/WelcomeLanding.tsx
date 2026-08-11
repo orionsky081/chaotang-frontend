@@ -78,8 +78,8 @@ export function WelcomeLanding() {
         {/* 顶栏 */}
         <header className="flex items-center justify-between px-6 py-5 md:px-10">
           <div className="flex items-center gap-3">
-            <div className="grid h-9 w-9 place-items-center rounded-full border border-[#F0C66A]/50 bg-[#0B0F1A]">
-              <BrandLogo className="h-6 w-6" />
+            <div className="grid h-12 w-12 place-items-center rounded-full border border-[#F0C66A]/50 bg-[#0B0F1A]">
+              <BrandLogo className="h-9 w-9" />
             </div>
             <div>
               <div className="text-[15px] font-bold tracking-[0.1em] text-[#F5E9C9]" style={{ fontFamily: 'var(--font-serif)' }}>朝堂 OS</div>

@@ -31,14 +31,14 @@ export function AuthShell({
               <div>
                 <div className="flex items-center gap-3">
                   <div
-                    className="flex h-11 w-11 items-center justify-center rounded-full"
+                    className="flex h-14 w-14 items-center justify-center rounded-full"
                     style={{
                       background: 'radial-gradient(circle at 30% 30%, #1A2236, #04060E)',
                       border: '1px solid rgba(240,198,106,0.35)',
                       boxShadow: '0 0 24px rgba(240,198,106,0.18)',
                     }}
                   >
-                    <BrandLogo className="h-7 w-7" />
+                    <BrandLogo className="h-10 w-10" />
                   </div>
                   <div>
                     <div className="page-eyebrow">CourtOS Access</div>
