@@ -214,7 +214,7 @@ export function GlassPanel({
         borderRadius: flush ? 0 : undefined,
         backdropFilter: 'blur(8px)',
         WebkitBackdropFilter: 'blur(8px)',
-        boxShadow: flush ? 'none' : `0 20px 55px rgba(0,0,0,0.55), inset 0 1px 0 rgba(245,233,201,0.045), inset 0 0 34px rgba(240,198,106,0.025)`,
+        boxShadow: flush ? 'none' : `0 4px 14px rgba(0,0,0,0.45), 0 22px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(240,198,106,0.06), inset 0 1px 0 rgba(245,233,201,0.06), inset 0 0 34px rgba(240,198,106,0.03)`,
         ...style,
       }}
     >

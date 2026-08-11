@@ -100,6 +100,7 @@ export function ChancellorColumn({
   activeId,
   showQuickAsk = true,
   flush = false,
+  hidePortrait = false,
   emptyHint = '暂无今日要务。下旨后形成的蜂群会话会回到这里。',
 }: {
   suggestions: ChancellorSuggestion[];
@@ -110,12 +111,14 @@ export function ChancellorColumn({
   showQuickAsk?: boolean;
   emptyHint?: string;
   flush?: boolean;
+  hidePortrait?: boolean;
 }) {
   const visibleSuggestions = suggestions.slice(0, MAX_CHANCELLOR_ITEMS);
   const hiddenCount = Math.max(suggestions.length - visibleSuggestions.length, 0);
+  const showBanner = !flush && !hidePortrait;
   return (
     <GlassPanel accent={GOLD} className={flush ? 'h-full border-y-0' : 'h-full'} flush={flush}>
-      {!flush && <PortraitBanner
+      {showBanner && <PortraitBanner
         portrait={SHANGSHUFANG_ASSETS.portraitChancellor}
         name="丞相"
         duty="辅政之臣 · 总揽要务"
@@ -123,7 +126,7 @@ export function ChancellorColumn({
         accent={GOLD}
       />}
 
-      {!flush && <div
+      {showBanner && <div
         className="mx-4 mb-1 h-px"
         style={{ background: `linear-gradient(90deg, transparent, ${GOLD}40, transparent)` }}
         aria-hidden

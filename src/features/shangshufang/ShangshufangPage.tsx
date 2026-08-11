@@ -1235,70 +1235,8 @@ export function ShangshufangPage() {
       </div>
 
       <main className="relative z-10 mx-auto flex min-h-0 w-full flex-1 flex-col overflow-hidden px-3 py-3 pb-[132px]">
-        <div className={`mx-auto grid w-full max-w-[1440px] flex-1 gap-3 lg:h-full lg:min-h-0 ${
-          showChancellorPanel && showMentorPanel
-            ? 'lg:grid-cols-[300px_minmax(0,1fr)_300px] grid-cols-1'
-            : showChancellorPanel || showMentorPanel
-              ? 'lg:grid-cols-[minmax(280px,320px)_minmax(0,1fr)] grid-cols-1'
-              : 'grid-cols-1'
-        }`}>
-          {showChancellorPanel && (
-          <div className="order-2 min-h-0 lg:order-1 lg:h-full">
-            <ChancellorColumn
-              suggestions={chancellorSuggestions}
-              onSelect={(item) => {
-                setSelectedMentorGuidance(null);
-                if (item.memorial) {
-                  const view: EdictView = {
-                    id: item.memorial.id,
-                    title: item.memorial.title,
-                    subtitle: item.memorial.subtitle,
-                    documentKind: '奏折',
-                    question: item.memorial.reason,
-                    seal: 'imperial',
-                    meta: {
-                      petitioner: item.memorial.petitioner,
-                      reporter: item.memorial.reporter,
-                      badges: [{ label: item.memorial.sourceLabel ?? '来源待核', tone: 'amber' }],
-                    },
-                    rows: [
-                      { label: '所议', body: item.memorial.reason || item.memorial.subtitle || item.memorial.title },
-                      { label: '主判', body: item.memorial.suggestion },
-                      { label: '红线', body: item.memorial.risk || '暂无明确红线。' },
-                      { label: '后令', body: item.memorial.verdict },
-                    ],
-                    sealDate: item.memorial.sealDate,
-                  };
-                  setSelectedMemorial(view);
-                } else {
-                  const view: EdictView = {
-                    id: item.id,
-                    title: item.title,
-                    subtitle: item.tag,
-                    documentKind: '奏折',
-                    question: item.whyNow,
-                    seal: 'imperial',
-                    meta: {
-                      badges: [{ label: item.sourceLabel ?? '丞相建议', tone: 'amber' }],
-                    },
-                    rows: [
-                      { label: '所议', body: item.title },
-                      { label: '主判', body: item.whyNow || '待丞相详陈。' },
-                      ...(item.evidence?.length ? [{ label: '证据', body: item.evidence.join('\n') }] : []),
-                      ...(item.recommendedMinisters?.length ? [{ label: '参审', body: item.recommendedMinisters.join('、') }] : []),
-                    ],
-                  };
-                  setSelectedMemorial(view);
-                }
-              }}
-              onQuickAsk={() => flashNotice('御前试行版仅开放真实拟旨与裁决主链。')}
-              showQuickAsk={false}
-              emptyHint="尚无本案判断。拟旨后，丞相的真实建议会回到这里。"
-            />
-          </div>
-          )}
-
-          <div className="order-1 flex min-h-[min(70vh,640px)] flex-col lg:order-2 lg:h-full lg:min-h-0">
+        <div className="mx-auto grid w-full max-w-[1440px] flex-1 grid-cols-1 gap-3 lg:h-full lg:min-h-0">
+          <div className="flex min-h-[min(70vh,640px)] flex-col lg:h-full lg:min-h-0">
             {swarmWorking && (
               <div
                 data-testid="swarm-working-overlay"
@@ -1496,33 +1434,108 @@ export function ShangshufangPage() {
               <PilotScrollBody view={edictView} />
             </EdictStage>
           </div>
+        </div>
+      </main>
 
-          {showMentorPanel && (
-          <div className={`order-3 min-h-0 lg:h-full ${showChancellorPanel ? '' : 'lg:order-1'}`}>
-            <WangColumn
-              tutorials={qintianItems}
-              onSelect={(item) => {
-                setSelectedMemorial(null);
+      {/* ─── 遮罩：任一侧栏展开时压暗正文 ─── */}
+      {(showChancellorPanel || showMentorPanel) && (
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 z-30 animate-[ssf-scrim-in_0.45s_ease-out_both] backdrop-blur-[2px]"
+          style={{ background: 'rgba(2,3,10,0.42)' }}
+        />
+      )}
+
+      {/* ─── 左浮层：丞相奏折列表（点击底部「问丞相」折叠/展开） ─── */}
+      {showChancellorPanel && (
+        <aside
+          className="absolute bottom-[92px] left-4 top-[52px] z-40 w-[300px] animate-[ssf-panel-in-left_0.55s_cubic-bezier(0.22,1,0.36,1)_both]"
+          aria-label="丞相奏折列表"
+        >
+          <ChancellorColumn
+            suggestions={chancellorSuggestions}
+            onSelect={(item) => {
+              setSelectedMentorGuidance(null);
+              if (item.memorial) {
+                const view: EdictView = {
+                  id: item.memorial.id,
+                  title: item.memorial.title,
+                  subtitle: item.memorial.subtitle,
+                  documentKind: '奏折',
+                  question: item.memorial.reason,
+                  seal: 'imperial',
+                  meta: {
+                    petitioner: item.memorial.petitioner,
+                    reporter: item.memorial.reporter,
+                    badges: [{ label: item.memorial.sourceLabel ?? '来源待核', tone: 'amber' }],
+                  },
+                  rows: [
+                    { label: '所议', body: item.memorial.reason || item.memorial.subtitle || item.memorial.title },
+                    { label: '主判', body: item.memorial.suggestion },
+                    { label: '红线', body: item.memorial.risk || '暂无明确红线。' },
+                    { label: '后令', body: item.memorial.verdict },
+                  ],
+                  sealDate: item.memorial.sealDate,
+                };
+                setSelectedMemorial(view);
+              } else {
                 const view: EdictView = {
                   id: item.id,
                   title: item.title,
-                  subtitle: item.subtitle,
-                  documentKind: '钦天监',
-                  seal: 'tutorial',
+                  subtitle: item.tag,
+                  documentKind: '奏折',
+                  question: item.whyNow,
+                  seal: 'imperial',
+                  meta: {
+                    badges: [{ label: item.sourceLabel ?? '丞相建议', tone: 'amber' }],
+                  },
                   rows: [
-                    { label: '事由', body: item.subtitle || item.title },
-                    { label: '谨奏', body: item.subtitle || '钦天监指导。' },
+                    { label: '所议', body: item.title },
+                    { label: '主判', body: item.whyNow || '待丞相详陈。' },
+                    ...(item.evidence?.length ? [{ label: '证据', body: item.evidence.join('\n') }] : []),
+                    ...(item.recommendedMinisters?.length ? [{ label: '参审', body: item.recommendedMinisters.join('、') }] : []),
                   ],
                 };
-                setSelectedMentorGuidance(view);
-              }}
-              onQuickAsk={() => flashNotice('钦天监仅在后端规则触发时参审，前端不能强造结论。')}
-              showQuickAsk={false}
-            />
-          </div>
-          )}
-        </div>
-      </main>
+                setSelectedMemorial(view);
+              }
+            }}
+            onQuickAsk={() => flashNotice('御前试行版仅开放真实拟旨与裁决主链。')}
+            showQuickAsk={false}
+            hidePortrait
+            emptyHint="尚无本案判断。拟旨后，丞相的真实建议会回到这里。"
+          />
+        </aside>
+      )}
+
+      {/* ─── 右浮层：钦天监列表（点击底部「问钦天监」折叠/展开） ─── */}
+      {showMentorPanel && (
+        <aside
+          className="absolute bottom-[92px] right-4 top-[52px] z-40 w-[300px] animate-[ssf-panel-in-right_0.55s_cubic-bezier(0.22,1,0.36,1)_both]"
+          aria-label="钦天监列表"
+        >
+          <WangColumn
+            tutorials={qintianItems}
+            onSelect={(item) => {
+              setSelectedMemorial(null);
+              const view: EdictView = {
+                id: item.id,
+                title: item.title,
+                subtitle: item.subtitle,
+                documentKind: '钦天监',
+                seal: 'tutorial',
+                rows: [
+                  { label: '事由', body: item.subtitle || item.title },
+                  { label: '谨奏', body: item.subtitle || '钦天监指导。' },
+                ],
+              };
+              setSelectedMentorGuidance(view);
+            }}
+            onQuickAsk={() => flashNotice('钦天监仅在后端规则触发时参审，前端不能强造结论。')}
+            showQuickAsk={false}
+            hidePortrait
+          />
+        </aside>
+      )}
 
       <DecreeInput
         value={decreeText}

@@ -3158,3 +3158,17 @@ body {
   border: 1px solid rgba(240, 198, 106, 0.16);
   border-radius: 12px;
 }
+
+/* 上书房左右浮层：徐徐从两侧展开 */
+@keyframes ssf-panel-in-left {
+  from { opacity: 0; transform: translateX(-36px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes ssf-panel-in-right {
+  from { opacity: 0; transform: translateX(36px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes ssf-scrim-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

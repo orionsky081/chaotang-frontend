@@ -33,6 +33,7 @@ export function WangColumn({
   activeId,
   showQuickAsk = true,
   flush = false,
+  hidePortrait = false,
 }: {
   tutorials: WangTutorial[];
   onSelect: (t: WangTutorial) => void;
@@ -41,13 +42,15 @@ export function WangColumn({
   activeId?: string;
   showQuickAsk?: boolean;
   flush?: boolean;
+  hidePortrait?: boolean;
 }) {
   const visibleTutorials = tutorials.slice(0, MAX_TUTORIAL_ITEMS);
   const hiddenTutorialCount = Math.max(tutorials.length - visibleTutorials.length, 0);
+  const showBanner = !flush && !hidePortrait;
 
   return (
     <GlassPanel accent={GOLD} className={flush ? 'h-full border-y-0' : 'h-full'} flush={flush}>
-      {!flush && <PortraitBanner
+      {showBanner && <PortraitBanner
         portrait={SHANGSHUFANG_ASSETS.portraitWang}
         name="钦天监"
         duty="观星导师 · 先知用法"
@@ -60,7 +63,7 @@ export function WangColumn({
         }
       />}
 
-      {!flush && <div
+      {showBanner && <div
         className="mx-4 mb-1 h-px"
         style={{ background: `linear-gradient(90deg, transparent, ${GOLD}40, transparent)` }}
         aria-hidden
