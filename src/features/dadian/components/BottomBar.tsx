@@ -80,59 +80,7 @@ export default function BottomBar() {
           </Link>
         </div>
       </div>
-
-      {/* 双顾问入口:左问丞相 · 先压判断与验证 / 右问钦天监 · 先看时机与风险(深底金边圆角) */}
-      <div className="grid grid-cols-2 gap-2 px-3 pb-2.5 md:px-4">
-        <AdvisorEntry
-          title="问丞相"
-          hint="先压判断与缺证"
-          href="/court-briefing"
-          accent="#F0C66A"
-          dot="#F0C66A"
-        />
-        <AdvisorEntry
-          title="问钦天监"
-          hint="先看时机与风险"
-          href="/forecast"
-          accent="#9B6CF6"
-          dot="#9B6CF6"
-        />
-      </div>
     </div>
-  );
-}
-
-function AdvisorEntry({
-  title,
-  hint,
-  href,
-  accent,
-  dot,
-}: {
-  title: string;
-  hint: string;
-  href: string;
-  accent: string;
-  dot: string;
-}) {
-  return (
-    <Link
-      href={href}
-      className="group flex min-w-0 items-center gap-2.5 rounded-lg border border-[#F0C66A]/26 bg-[#0B1120]/72 px-3 py-2 transition hover:border-[#F0C66A]/60 hover:bg-[#F0C66A]/[0.07]"
-    >
-      <span
-        className="h-2 w-2 shrink-0 rounded-full"
-        style={{ backgroundColor: dot, boxShadow: `0 0 8px ${dot}` }}
-        aria-hidden
-      />
-      <span className="min-w-0 flex-1">
-        <span className="block truncate text-[12px] font-semibold leading-tight text-[#F5E9C9]">{title}</span>
-        <span className="block truncate text-[10px] leading-tight text-[#9AA3C4]">{hint}</span>
-      </span>
-      <span className="shrink-0 text-[12px] transition group-hover:translate-x-0.5" style={{ color: accent }}>
-        →
-      </span>
-    </Link>
   );
 }
 
