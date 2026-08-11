@@ -48,6 +48,9 @@ const MOCK_ROUTES: Record<string, unknown> = {
 
   // 情报
   '/api/court/intel/signals': intelBoard,
+  // 基础路径兜底：hook 实际请求 ?limit=80，按基础路径匹配即可命中，避免
+  // 任何 limit 值穿透到真实后端导致 401/失败（见 resolve-intel-board-state 的 error 分支）。
+  '/api/frontend/intel/board': intelBoard,
   '/api/frontend/intel/board?limit=50': intelBoard,
   '/api/frontend/intel/board?limit=100': intelBoard,
 

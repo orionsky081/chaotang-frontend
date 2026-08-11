@@ -11,7 +11,11 @@
     "sourceCount": 15
   },
   "sourceLabel": "LIVE · 后端情报投影",
-  "dispatchTargets": ["hu_bu", "gong_bu", "xing_bu"],
+  "dispatchTargets": [
+    { "agentCode": "hu_bu", "nameCn": "户部", "emoji": "🏦", "color": "#F0C66A" },
+    { "agentCode": "gong_bu", "nameCn": "工部", "emoji": "⚙️", "color": "#3DD68C" },
+    { "agentCode": "xing_bu", "nameCn": "刑部", "emoji": "⚖️", "color": "#F5A524" }
+  ],
   "signals": [
     {
       "id": "sig-001",
