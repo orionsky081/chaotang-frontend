@@ -198,18 +198,6 @@ export function DecreeInput({
           style={{ background: 'rgba(0,0,0,0.4)', border: `1px solid ${accent}44`, fontFamily: 'var(--font-serif)', height: '36px' }}
         />
 
-        {/* ─── 问按钮 ─── */}
-        <button
-          type="button"
-          onClick={handlePrimarySubmit}
-          disabled={busy}
-          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md font-serif text-[15px] font-bold transition hover:brightness-110 disabled:opacity-50"
-          style={{ background: '#1a1a1a', color: GOLD, border: `1px solid ${GOLD}44` }}
-          aria-label="发送"
-        >
-          问
-        </button>
-
         {/* ─── 功能按钮组：润色 → 下旨 → 密旨 → 丞相 → 钦天监 ─── */}
         <div className="flex shrink-0 items-center gap-1.5">
           <button
