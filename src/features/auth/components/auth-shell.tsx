@@ -30,16 +30,7 @@ export function AuthShell({
             <div className="flex h-full flex-col justify-between gap-8">
               <div>
                 <div className="flex items-center gap-3">
-                  <div
-                    className="flex h-14 w-14 items-center justify-center rounded-full"
-                    style={{
-                      background: 'radial-gradient(circle at 30% 30%, #1A2236, #04060E)',
-                      border: '1px solid rgba(240,198,106,0.35)',
-                      boxShadow: '0 0 24px rgba(240,198,106,0.18)',
-                    }}
-                  >
-                    <BrandLogo className="h-10 w-10" />
-                  </div>
+                  <BrandLogo className="h-12 w-12" />
                   <div>
                     <div className="page-eyebrow">CourtOS Access</div>
                     <div className="page-title">朝堂OS</div>
