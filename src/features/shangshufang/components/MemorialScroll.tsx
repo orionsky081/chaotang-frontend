@@ -1656,7 +1656,7 @@ function MetaBadge({ label, tone = 'blue' }: { label: string; tone?: 'green' | '
 function EdictActionDock({ children }: { children: ReactNode }) {
   return (
     <div
-      className="relative z-40 w-full shrink-0 px-3 py-1 md:px-4"
+      className="absolute inset-x-6 bottom-5 z-40 max-h-[88px] overflow-y-auto px-3 py-1 md:inset-x-12 md:px-4"
       style={{
         background: 'transparent',
         boxShadow: 'none',

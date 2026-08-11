@@ -1234,7 +1234,7 @@ export function ShangshufangPage() {
         )}
       </div>
 
-      <main className="relative z-10 mx-auto flex min-h-0 w-full flex-1 flex-col overflow-hidden px-3 py-3">
+      <main className="relative z-10 mx-auto flex min-h-0 w-full flex-1 flex-col overflow-hidden px-3 py-3 pb-[132px]">
         <div className={`mx-auto grid w-full max-w-[1440px] flex-1 gap-3 lg:h-full lg:min-h-0 ${
           showChancellorPanel && showMentorPanel
             ? 'lg:grid-cols-[300px_minmax(0,1fr)_300px] grid-cols-1'
@@ -1490,39 +1490,6 @@ export function ShangshufangPage() {
                     </>
                   )}
                   </div>
-                  <DecreeInput
-                    value={decreeText}
-                    onChange={setDecreeText}
-                    mode={decreeMode}
-                    askTarget={askTarget}
-                    onModeChange={setDecreeMode}
-                    onAskTargetChange={setAskTarget}
-                    onSend={() => {
-                      if (phase === 'idle' || phase === 'error') void draftStudy();
-                      else flashNotice('当前案已进入流程，请先完成本轮下旨或裁决。');
-                    }}
-                    onPolish={() => flashNotice('御前试行版暂不调用额外模型润色，请直接修改原文。')}
-                    onFileUpload={(file) => flashNotice(`附件已选择：${file.name}（暂不上传）`)}
-                    state={decreeState}
-                    message={error}
-                    showContext={false}
-                    availableModes={['order', 'secret', 'ask']}
-                    submitLabel="下旨并启动 LangGraph"
-                    showChancellorPanel={showChancellorPanel}
-                    showMentorPanel={showMentorPanel}
-                    onToggleChancellorPanel={() => {
-                      setShowChancellorPanel((prev) => !prev);
-                      if (!showChancellorPanel) {
-                        setSelectedMemorial(null);
-                      }
-                    }}
-                    onToggleMentorPanel={() => {
-                      setShowMentorPanel((prev) => !prev);
-                      if (!showMentorPanel) {
-                        setSelectedMentorGuidance(null);
-                      }
-                    }}
-                  />
                 </div>
               }
             >
@@ -1556,6 +1523,40 @@ export function ShangshufangPage() {
           )}
         </div>
       </main>
+
+      <DecreeInput
+        value={decreeText}
+        onChange={setDecreeText}
+        mode={decreeMode}
+        askTarget={askTarget}
+        onModeChange={setDecreeMode}
+        onAskTargetChange={setAskTarget}
+        onSend={() => {
+          if (phase === 'idle' || phase === 'error') void draftStudy();
+          else flashNotice('当前案已进入流程，请先完成本轮下旨或裁决。');
+        }}
+        onPolish={() => flashNotice('御前试行版暂不调用额外模型润色，请直接修改原文。')}
+        onFileUpload={(file) => flashNotice(`附件已选择：${file.name}（暂不上传）`)}
+        state={decreeState}
+        message={error}
+        showContext={false}
+        availableModes={['order', 'secret', 'ask']}
+        submitLabel="下旨并启动 LangGraph"
+        showChancellorPanel={showChancellorPanel}
+        showMentorPanel={showMentorPanel}
+        onToggleChancellorPanel={() => {
+          setShowChancellorPanel((prev) => !prev);
+          if (!showChancellorPanel) {
+            setSelectedMemorial(null);
+          }
+        }}
+        onToggleMentorPanel={() => {
+          setShowMentorPanel((prev) => !prev);
+          if (!showMentorPanel) {
+            setSelectedMentorGuidance(null);
+          }
+        }}
+      />
 
       {canImperialAct && signoffRequiredAction && taskId && (
         <section

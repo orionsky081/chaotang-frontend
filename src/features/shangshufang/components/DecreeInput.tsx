@@ -115,7 +115,7 @@ export function DecreeInput({
   return (
     <div
       data-three-axis-decree-input
-      className="relative z-[60] w-full"
+      className="fixed inset-x-0 bottom-0 z-[60] w-full"
       style={{ background: 'rgba(5,7,13,0.95)', backdropFilter: 'blur(14px)' }}
     >
       {/* 顶部金线 */}
