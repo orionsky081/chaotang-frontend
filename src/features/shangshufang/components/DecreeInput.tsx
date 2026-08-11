@@ -7,7 +7,7 @@
  */
 
 import { useEffect, useRef, useState, type KeyboardEvent as ReactKeyboardEvent, type RefObject } from 'react';
-import { FileText, Lock, MessageSquare, Scroll, Telescope } from 'lucide-react';
+import { FileText, Lock, MessageSquare, Paperclip, Scroll, Telescope } from 'lucide-react';
 
 import { assetUrl } from '@/lib/asset';
 import { SHANGSHUFANG_ASSETS } from '../constants';
@@ -40,12 +40,17 @@ export interface DecreeInputProps {
   onAskTargetChange?: (target: AskTarget) => void;
   onSend: () => void;
   onPolish?: () => void;
+  onFileUpload?: (file: File) => void;
   state: DecreeState;
   message: string | null;
   inputRef?: RefObject<HTMLTextAreaElement | null>;
   showContext?: boolean;
   availableModes?: DecreeMode[];
   submitLabel?: string;
+  showChancellorPanel?: boolean;
+  showMentorPanel?: boolean;
+  onToggleChancellorPanel?: () => void;
+  onToggleMentorPanel?: () => void;
 }
 
 export function DecreeInput({
@@ -57,11 +62,16 @@ export function DecreeInput({
   onAskTargetChange,
   onSend,
   onPolish,
+  onFileUpload,
   state,
   message,
   inputRef,
   availableModes = ['ask', 'order', 'secret'],
   submitLabel = '呈递',
+  showChancellorPanel = false,
+  showMentorPanel = false,
+  onToggleChancellorPanel,
+  onToggleMentorPanel,
 }: DecreeInputProps) {
   const isComposingRef = useRef(false);
   const [localValue, setLocalValue] = useState(value);
@@ -120,8 +130,9 @@ export function DecreeInput({
         {/* ─── 左侧：问丞相 ─── */}
         <button
           type="button"
-          onClick={() => { onModeChange('ask'); onAskTargetChange?.('chancellor'); }}
+          onClick={() => onToggleChancellorPanel?.()}
           className="flex shrink-0 items-center gap-2 rounded-lg px-2 py-1.5 transition hover:bg-white/5"
+          style={showChancellorPanel ? { background: 'rgba(240,198,106,0.12)' } : undefined}
         >
           <div className="h-10 w-10 shrink-0 overflow-hidden rounded-md border border-[#F0C66A]/30 bg-[#1a1a1a]">
             <img
@@ -136,6 +147,26 @@ export function DecreeInput({
             <span className="text-[9px] text-[#8A9BB8]">历史判断与辩证</span>
           </span>
         </button>
+
+        {/* ─── 上传附件 ─── */}
+        {onFileUpload && (
+          <label
+            className="flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center rounded-md transition hover:brightness-110"
+            style={{ background: '#1a1a1a', border: '1px solid rgba(255,255,255,0.12)' }}
+            title="上传附件"
+          >
+            <Paperclip size={14} className="text-[#C8C8C8]" />
+            <input
+              type="file"
+              className="sr-only"
+              onChange={(e) => {
+                const file = e.target.files?.[0];
+                if (file) onFileUpload(file);
+                e.currentTarget.value = '';
+              }}
+            />
+          </label>
+        )}
 
         {/* ─── 输入框 ─── */}
         <textarea
@@ -220,8 +251,9 @@ export function DecreeInput({
         {/* ─── 右侧：问钦天监 ─── */}
         <button
           type="button"
-          onClick={() => { onModeChange('ask'); onAskTargetChange?.('mentor'); }}
+          onClick={() => onToggleMentorPanel?.()}
           className="flex shrink-0 items-center gap-2 rounded-lg px-2 py-1.5 transition hover:bg-white/5"
+          style={showMentorPanel ? { background: 'rgba(240,198,106,0.12)' } : undefined}
         >
           <span className="hidden flex-col items-end leading-tight sm:flex">
             <span className="text-[12px] font-medium text-[#F5E9C9]">问钦天监</span>

@@ -543,6 +543,10 @@ export function ShangshufangPage() {
   const [evidencePackId, setEvidencePackId] = useState('');
   const [decreeMode, setDecreeMode] = useState<DecreeMode>('order');
   const [askTarget, setAskTarget] = useState<AskTarget>('chancellor');
+  const [showChancellorPanel, setShowChancellorPanel] = useState(false);
+  const [showMentorPanel, setShowMentorPanel] = useState(false);
+  const [selectedMemorial, setSelectedMemorial] = useState<EdictView | null>(null);
+  const [selectedMentorGuidance, setSelectedMentorGuidance] = useState<EdictView | null>(null);
   const [phase, setPhase] = useState<PilotPhase>('idle');
   const [taskId, setTaskId] = useState<string | null>(null);
   const [draft, setDraft] = useState<DraftEdict | null>(null);
@@ -670,6 +674,8 @@ export function ShangshufangPage() {
     );
 
   const edictView = useMemo(() => {
+    if (selectedMemorial) return selectedMemorial;
+    if (selectedMentorGuidance) return selectedMentorGuidance;
     if (memorial && currentTask && archiveRecord) {
       return archivedMemorialView(
         currentTask,
@@ -683,7 +689,7 @@ export function ShangshufangPage() {
     if (memorial && currentTask) return memorialView(currentTask, memorial, routeReason, telemetry);
     if (draft && taskId) return draftView(taskId, draft);
     return idleView();
-  }, [archiveRecord, currentTask, deviationCard, draft, memorial, routeReason, taskId, telemetry]);
+  }, [archiveRecord, currentTask, deviationCard, draft, memorial, routeReason, taskId, telemetry, selectedMemorial, selectedMentorGuidance]);
 
   const chancellorSuggestions = useMemo<ChancellorSuggestion[]>(() => {
     if (memorial && currentTask) {
@@ -1229,16 +1235,68 @@ export function ShangshufangPage() {
       </div>
 
       <main className="relative z-10 mx-auto flex min-h-0 w-full flex-1 flex-col overflow-hidden px-3 py-3 pb-[132px]">
-        <div className="mx-auto grid w-full max-w-[1440px] flex-1 grid-cols-1 gap-3 lg:h-full lg:min-h-0 lg:grid-cols-[300px_minmax(0,1fr)_300px]">
+        <div className={`mx-auto grid w-full max-w-[1440px] flex-1 gap-3 lg:h-full lg:min-h-0 ${
+          showChancellorPanel && showMentorPanel
+            ? 'lg:grid-cols-[300px_minmax(0,1fr)_300px] grid-cols-1'
+            : showChancellorPanel || showMentorPanel
+              ? 'lg:grid-cols-[minmax(280px,320px)_minmax(0,1fr)] grid-cols-1'
+              : 'grid-cols-1'
+        }`}>
+          {showChancellorPanel && (
           <div className="order-2 min-h-0 lg:order-1 lg:h-full">
             <ChancellorColumn
               suggestions={chancellorSuggestions}
-              onSelect={(item) => flashNotice(item.whyNow ?? item.title)}
+              onSelect={(item) => {
+                setSelectedMentorGuidance(null);
+                if (item.memorial) {
+                  const view: EdictView = {
+                    id: item.memorial.id,
+                    title: item.memorial.title,
+                    subtitle: item.memorial.subtitle,
+                    documentKind: '奏折',
+                    question: item.memorial.reason,
+                    seal: 'imperial',
+                    meta: {
+                      petitioner: item.memorial.petitioner,
+                      reporter: item.memorial.reporter,
+                      badges: [{ label: item.memorial.sourceLabel ?? '来源待核', tone: 'amber' }],
+                    },
+                    rows: [
+                      { label: '所议', body: item.memorial.reason || item.memorial.subtitle || item.memorial.title },
+                      { label: '主判', body: item.memorial.suggestion },
+                      { label: '红线', body: item.memorial.risk || '暂无明确红线。' },
+                      { label: '后令', body: item.memorial.verdict },
+                    ],
+                    sealDate: item.memorial.sealDate,
+                  };
+                  setSelectedMemorial(view);
+                } else {
+                  const view: EdictView = {
+                    id: item.id,
+                    title: item.title,
+                    subtitle: item.tag,
+                    documentKind: '奏折',
+                    question: item.whyNow,
+                    seal: 'imperial',
+                    meta: {
+                      badges: [{ label: item.sourceLabel ?? '丞相建议', tone: 'amber' }],
+                    },
+                    rows: [
+                      { label: '所议', body: item.title },
+                      { label: '主判', body: item.whyNow || '待丞相详陈。' },
+                      ...(item.evidence?.length ? [{ label: '证据', body: item.evidence.join('\n') }] : []),
+                      ...(item.recommendedMinisters?.length ? [{ label: '参审', body: item.recommendedMinisters.join('、') }] : []),
+                    ],
+                  };
+                  setSelectedMemorial(view);
+                }
+              }}
               onQuickAsk={() => flashNotice('御前试行版仅开放真实拟旨与裁决主链。')}
               showQuickAsk={false}
               emptyHint="尚无本案判断。拟旨后，丞相的真实建议会回到这里。"
             />
           </div>
+          )}
 
           <div className="order-1 flex min-h-[min(70vh,640px)] flex-col lg:order-2 lg:h-full lg:min-h-0">
             {swarmWorking && (
@@ -1449,14 +1507,30 @@ export function ShangshufangPage() {
             </EdictStage>
           </div>
 
-          <div className="order-3 min-h-0 lg:h-full">
+          {showMentorPanel && (
+          <div className={`order-3 min-h-0 lg:h-full ${showChancellorPanel ? '' : 'lg:order-1'}`}>
             <WangColumn
               tutorials={qintianItems}
-              onSelect={(item) => flashNotice(item.subtitle)}
+              onSelect={(item) => {
+                setSelectedMemorial(null);
+                const view: EdictView = {
+                  id: item.id,
+                  title: item.title,
+                  subtitle: item.subtitle,
+                  documentKind: '钦天监',
+                  seal: 'tutorial',
+                  rows: [
+                    { label: '事由', body: item.subtitle || item.title },
+                    { label: '谨奏', body: item.subtitle || '钦天监指导。' },
+                  ],
+                };
+                setSelectedMentorGuidance(view);
+              }}
               onQuickAsk={() => flashNotice('钦天监仅在后端规则触发时参审，前端不能强造结论。')}
               showQuickAsk={false}
             />
           </div>
+          )}
         </div>
       </main>
 
@@ -1596,11 +1670,26 @@ export function ShangshufangPage() {
           else flashNotice('当前案已进入流程，请先完成本轮下旨或裁决。');
         }}
         onPolish={() => flashNotice('御前试行版暂不调用额外模型润色，请直接修改原文。')}
+        onFileUpload={(file) => flashNotice(`附件已选择：${file.name}（暂不上传）`)}
         state={decreeState}
         message={error}
         showContext={false}
-        availableModes={['order']}
+        availableModes={['order', 'secret', 'ask']}
         submitLabel="下旨并启动 LangGraph"
+        showChancellorPanel={showChancellorPanel}
+        showMentorPanel={showMentorPanel}
+        onToggleChancellorPanel={() => {
+          setShowChancellorPanel((prev) => !prev);
+          if (!showChancellorPanel) {
+            setSelectedMemorial(null);
+          }
+        }}
+        onToggleMentorPanel={() => {
+          setShowMentorPanel((prev) => !prev);
+          if (!showMentorPanel) {
+            setSelectedMentorGuidance(null);
+          }
+        }}
       />
     </div>
   );
