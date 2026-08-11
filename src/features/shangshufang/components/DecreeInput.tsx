@@ -96,6 +96,7 @@ export function DecreeInput({
   const handleModeButtonClick = (item: typeof MODE_OPTIONS[number]) => {
     onModeChange(item.mode);
     if (item.mode === 'ask') onAskTargetChange?.(item.askTarget ?? 'chancellor');
+    onSend();
   };
 
   const isImeCompositionKey = (event: ReactKeyboardEvent<HTMLTextAreaElement>) =>
