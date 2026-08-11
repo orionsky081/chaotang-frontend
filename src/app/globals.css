@@ -2719,15 +2719,8 @@ body {
 }
 
 .vision-intro-brand-mark {
-  display: grid;
-  place-items: center;
-  width: 46px;
-  height: 46px;
-  padding: 6px;
-  border: 1px solid rgba(240, 198, 106, 0.42);
-  background: rgba(2, 4, 10, 0.32);
-  border-radius: 50%;
-  backdrop-filter: blur(16px);
+  width: 40px;
+  height: 40px;
 }
 
 .vision-intro-brand strong {
