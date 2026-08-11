@@ -1493,17 +1493,7 @@ export function ShangshufangPage() {
                 </div>
               }
             >
-              {(draft || memorial) ? (
-                <PilotScrollBody view={edictView} />
-              ) : (
-                <PilotStartGuide
-                  guide={pilotLaunchGuide}
-                  onUseTemplate={() => {
-                    setDecreeText(FIRST_DECREE_TEMPLATE);
-                    flashNotice('首旨模板已填入 · 请替换方括号内容后拟旨');
-                  }}
-                />
-              )}
+              <PilotScrollBody view={edictView} />
             </EdictStage>
           </div>
 
