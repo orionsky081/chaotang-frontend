@@ -239,7 +239,7 @@ export function ThreeAxisOfficeRails({
     <>
       <aside
         data-three-axis-panel="left"
-        className="pointer-events-none fixed left-4 top-[150px] z-[43] hidden w-[252px] xl:block 2xl:w-[286px]"
+        className="pointer-events-none fixed left-4 top-[150px] z-[43] hidden w-[252px] animate-[ssf-panel-in-left_0.55s_cubic-bezier(0.22,1,0.36,1)_both] xl:block 2xl:w-[286px]"
         aria-label={`${deptLabel}左侧信息面板`}
       >
         <OfficeRailCard
@@ -252,7 +252,7 @@ export function ThreeAxisOfficeRails({
       </aside>
       <aside
         data-three-axis-panel="right"
-        className="pointer-events-none fixed right-4 top-[150px] z-[43] hidden w-[252px] xl:block 2xl:w-[286px]"
+        className="pointer-events-none fixed right-4 top-[150px] z-[43] hidden w-[252px] animate-[ssf-panel-in-right_0.55s_cubic-bezier(0.22,1,0.36,1)_both] xl:block 2xl:w-[286px]"
         aria-label={`${deptLabel}右侧信息面板`}
       >
         <OfficeRailCard

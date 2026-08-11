@@ -90,6 +90,7 @@ export default function DepartmentsHallPage() {
       <div className="relative h-full flex-1 overflow-hidden">
         {selectedKey ? (
           <ThreeAxisOfficeRails
+            key={activeDeptCode}
             deptCode={activeDeptCode}
             deptLabel={activeDeptLabel}
             accent={selectedMinistry?.color}

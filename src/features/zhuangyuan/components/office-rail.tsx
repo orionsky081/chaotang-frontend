@@ -66,7 +66,9 @@ export function OfficeRail({ align, subTitle, items }: OfficeRailProps) {
     <aside
       data-office-rail={align}
       className={`pointer-events-none fixed top-[150px] z-[40] hidden w-[252px] xl:block 2xl:w-[286px] ${
-        align === 'left' ? 'left-4' : 'right-4'
+        align === 'left'
+          ? 'left-4 animate-[ssf-panel-in-left_0.55s_cubic-bezier(0.22,1,0.36,1)_both]'
+          : 'right-4 animate-[ssf-panel-in-right_0.55s_cubic-bezier(0.22,1,0.36,1)_both]'
       }`}
       aria-label={`户部 · ${subTitle}`}
     >
