@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import type { ReactNode } from 'react';
-import { Crown } from 'lucide-react';
 import { GlassPanel } from '@/components/ui/glass-panel';
 import { withBasePath } from '@/lib/base-path';
 
@@ -33,11 +32,16 @@ export function AuthShell({
                   <div
                     className="flex h-11 w-11 items-center justify-center rounded-full"
                     style={{
-                      background: 'radial-gradient(circle at 30% 30%, #F0C66A, #8A6A2A)',
-                      boxShadow: '0 0 24px rgba(240,198,106,0.25)',
+                      background: 'radial-gradient(circle at 30% 30%, #1A2236, #04060E)',
+                      border: '1px solid rgba(240,198,106,0.35)',
+                      boxShadow: '0 0 24px rgba(240,198,106,0.18)',
                     }}
                   >
-                    <Crown size={18} className="text-[#04060E]" />
+                    <img
+                      src={withBasePath('/logo-dragon.svg')}
+                      alt="朝堂OS"
+                      className="h-7 w-7"
+                    />
                   </div>
                   <div>
                     <div className="page-eyebrow">CourtOS Access</div>
