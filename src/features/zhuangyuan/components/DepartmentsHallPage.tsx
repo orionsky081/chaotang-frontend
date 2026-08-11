@@ -8,11 +8,6 @@ import { MINISTRIES } from '@/features/zhuangyuan/components/manorData';
 import MinistryMetricsCard, {
   type MinistryCardMetric,
 } from '@/features/zhuangyuan/components/ministry-metrics-card';
-import {
-  HUBU_LEFT_RAIL,
-  HUBU_RIGHT_RAIL,
-  OfficeRail,
-} from '@/features/zhuangyuan/components/office-rail';
 import { useMinistryMetrics } from '@/features/zhuangyuan/hooks/use-ministry-metrics';
 import { isMinistryLive, MINISTRY_TO_DEPT_CODE } from '@/features/zhuangyuan/lib/department-vitrine';
 import { assetUrl } from '@/lib/asset';
@@ -88,19 +83,13 @@ export default function DepartmentsHallPage() {
   return (
     <div ref={sceneRef} className="h-full w-full overflow-hidden" style={{ background: '#04060e' }}>
       <div className="relative h-full flex-1 overflow-hidden">
-        {selectedKey ? (
+        {selectedKey && (
           <ThreeAxisOfficeRails
             key={activeDeptCode}
             deptCode={activeDeptCode}
             deptLabel={activeDeptLabel}
             accent={selectedMinistry?.color}
           />
-        ) : (
-          /* 未选中时展示常驻「户部 · OFFICE RAIL」侧栏（设计稿核心缺口） */
-          <>
-            <OfficeRail align="left" subTitle="账册与风险" items={HUBU_LEFT_RAIL} />
-            <OfficeRail align="right" subTitle="预算与验收" items={HUBU_RIGHT_RAIL} />
-          </>
         )}
 
         {/* 底部：顾问卡 + 展开辅政（浮在场景底部） */}
