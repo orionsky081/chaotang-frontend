@@ -25,6 +25,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const pathname = usePathname();
   const hiddenChromeRoutes = ['/study'];
   const hideTopNav = hiddenChromeRoutes.some((p) => pathname === p);
+  const hideFooterRoutes = ['/shangshufang', '/court-briefing'];
+  const hideFooter = hideFooterRoutes.some((p) => pathname === p);
   const hideFloatingChrome = false;
   const pulse = useCourtPulse(!hideTopNav);
   const [loggingOut, setLoggingOut] = useState(false);
@@ -51,7 +53,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     </>
   ) : null;
 
-  const footer = !hideTopNav ? <GlobalDashboardFooter /> : null;
+  const footer = !hideTopNav && !hideFooter ? <GlobalDashboardFooter /> : null;
 
   const floatingChrome = (
     <>
